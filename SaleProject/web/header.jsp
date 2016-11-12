@@ -36,7 +36,7 @@ h1{
                 <a href=your_product.jsp> YOUR PRODUCT </a>
             </td>
             <td>
-                <a href=add_catalog.jsp> ADD CATALOG </a>
+                <a href=add_product.jsp> ADD PRODUCT </a>
             </td>
             <td>
                 <a href=sales.jsp> SALES </a>
