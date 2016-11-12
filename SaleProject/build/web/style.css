@@ -163,6 +163,10 @@ color: black;}
 }
 
 
+.producttable td.center{
+	text-align : center;
+}
+
 .producttable td.right{
 	text-align : right;
 }

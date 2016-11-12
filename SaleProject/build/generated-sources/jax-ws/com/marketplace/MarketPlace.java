@@ -3,6 +3,7 @@ package com.marketplace;
 
 import java.util.List;
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -26,6 +27,21 @@ public interface MarketPlace {
 
     /**
      * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<com.marketplace.Product>
+     */
+    @WebMethod(operationName = "SearchProductWithProductName")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "SearchProductWithProductName", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductName")
+    @ResponseWrapper(localName = "SearchProductWithProductNameResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductNameResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/SearchProductWithProductNameRequest", output = "http://marketplace.com/MarketPlace/SearchProductWithProductNameResponse")
+    public List<Product> searchProductWithProductName(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
      * @return
      *     returns java.util.List<com.marketplace.Product>
      */
@@ -35,5 +51,20 @@ public interface MarketPlace {
     @ResponseWrapper(localName = "GetAllProductResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAllProductResponse")
     @Action(input = "http://marketplace.com/MarketPlace/GetAllProductRequest", output = "http://marketplace.com/MarketPlace/GetAllProductResponse")
     public List<Product> getAllProduct();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<com.marketplace.Product>
+     */
+    @WebMethod(operationName = "SearchProductWithAccount")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "SearchProductWithAccount", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithAccount")
+    @ResponseWrapper(localName = "SearchProductWithAccountResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithAccountResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/SearchProductWithAccountRequest", output = "http://marketplace.com/MarketPlace/SearchProductWithAccountResponse")
+    public List<Product> searchProductWithAccount(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
 
 }

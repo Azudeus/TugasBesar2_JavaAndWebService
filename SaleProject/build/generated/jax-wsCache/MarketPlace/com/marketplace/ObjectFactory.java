@@ -26,6 +26,10 @@ public class ObjectFactory {
 
     private final static QName _GetAllProduct_QNAME = new QName("http://marketplace.com/", "GetAllProduct");
     private final static QName _GetAllProductResponse_QNAME = new QName("http://marketplace.com/", "GetAllProductResponse");
+    private final static QName _SearchProductWithAccount_QNAME = new QName("http://marketplace.com/", "SearchProductWithAccount");
+    private final static QName _SearchProductWithAccountResponse_QNAME = new QName("http://marketplace.com/", "SearchProductWithAccountResponse");
+    private final static QName _SearchProductWithProductName_QNAME = new QName("http://marketplace.com/", "SearchProductWithProductName");
+    private final static QName _SearchProductWithProductNameResponse_QNAME = new QName("http://marketplace.com/", "SearchProductWithProductNameResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.marketplace
@@ -48,6 +52,38 @@ public class ObjectFactory {
      */
     public GetAllProductResponse createGetAllProductResponse() {
         return new GetAllProductResponse();
+    }
+
+    /**
+     * Create an instance of {@link SearchProductWithAccount }
+     * 
+     */
+    public SearchProductWithAccount createSearchProductWithAccount() {
+        return new SearchProductWithAccount();
+    }
+
+    /**
+     * Create an instance of {@link SearchProductWithAccountResponse }
+     * 
+     */
+    public SearchProductWithAccountResponse createSearchProductWithAccountResponse() {
+        return new SearchProductWithAccountResponse();
+    }
+
+    /**
+     * Create an instance of {@link SearchProductWithProductName }
+     * 
+     */
+    public SearchProductWithProductName createSearchProductWithProductName() {
+        return new SearchProductWithProductName();
+    }
+
+    /**
+     * Create an instance of {@link SearchProductWithProductNameResponse }
+     * 
+     */
+    public SearchProductWithProductNameResponse createSearchProductWithProductNameResponse() {
+        return new SearchProductWithProductNameResponse();
     }
 
     /**
@@ -74,6 +110,42 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://marketplace.com/", name = "GetAllProductResponse")
     public JAXBElement<GetAllProductResponse> createGetAllProductResponse(GetAllProductResponse value) {
         return new JAXBElement<GetAllProductResponse>(_GetAllProductResponse_QNAME, GetAllProductResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchProductWithAccount }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "SearchProductWithAccount")
+    public JAXBElement<SearchProductWithAccount> createSearchProductWithAccount(SearchProductWithAccount value) {
+        return new JAXBElement<SearchProductWithAccount>(_SearchProductWithAccount_QNAME, SearchProductWithAccount.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchProductWithAccountResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "SearchProductWithAccountResponse")
+    public JAXBElement<SearchProductWithAccountResponse> createSearchProductWithAccountResponse(SearchProductWithAccountResponse value) {
+        return new JAXBElement<SearchProductWithAccountResponse>(_SearchProductWithAccountResponse_QNAME, SearchProductWithAccountResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchProductWithProductName }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "SearchProductWithProductName")
+    public JAXBElement<SearchProductWithProductName> createSearchProductWithProductName(SearchProductWithProductName value) {
+        return new JAXBElement<SearchProductWithProductName>(_SearchProductWithProductName_QNAME, SearchProductWithProductName.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchProductWithProductNameResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "SearchProductWithProductNameResponse")
+    public JAXBElement<SearchProductWithProductNameResponse> createSearchProductWithProductNameResponse(SearchProductWithProductNameResponse value) {
+        return new JAXBElement<SearchProductWithProductNameResponse>(_SearchProductWithProductNameResponse_QNAME, SearchProductWithProductNameResponse.class, null, value);
     }
 
 }

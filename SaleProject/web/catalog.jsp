@@ -4,24 +4,21 @@
     Author     : user
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.marketplace.Product"%>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="style.css">
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    </head>
     <body>
         <%@include file="header.jsp" %>   
+
         <%-- set variable --%>
         <%
             List<Product> Products;
         %>
-        
-        
-         <%-- start web service invocation --%><hr/>
+         <%-- start web service invocation --%>
          <%
          try {
              com.marketplace.MarketPlace_Service service = new com.marketplace.MarketPlace_Service();
@@ -33,16 +30,56 @@
              throw new RuntimeException("Error condition!!!");
          }
          %>
-         <%-- end web service invocation --%><hr/>
- 
+         <%-- end web service invocation --%>
+
         
+        <p id = "SubHeader">What are you going to buy today?</p>
+        <hr>        
+   
+                     
+        <form name="search" action="catalogsearch.jsp" method="POST">
+        <table border='0' width = '100%'>
+                <tr>
+                        <td colspan="2"><div id="formField"><input type="text" name="key" id="formField" placeholder="Search catalog ..."></div></td>
+                        <td><div id="formField"><input type="submit" value="GO" class="button"></div></td>
+                </tr>
+                <tr>
+                        <td width="10%" rowspan="2">by</td>
+                        <td><input type="radio" name="type" value="product" required>product</td>
+                        <td width="10%"></td>
+                </tr>
+                </tr>
+                        <td><input type="radio" name="type" value="store">store</td>
+        </table>
+        </form>
+
         <% 
               for(int i = 0; i < Products.size(); i++){
                  Product temp = Products.get(i);
-                 out.println(temp.getProductId() + "<br>");
-                 out.println(temp.getProductName() + "<br>");
-                 out.println(temp.getProductDescription() + "<br>");
-                 out.println("<br>");
+                String dateAsText = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(temp.getProductDatetime() * 1000L));
+                 out.println(
+                "<p id = 'product'><b>" + temp.getUsername() +"</b> <br> added this on" + dateAsText +"<hr>"
+                +"<table class = 'producttable'>"
+                +"<tr>"
+                +"<td rowspan = '5' width = 128px> <img src = 'img/" + temp.getImgsrc() + "' style = 'width:128px;height:128px;' > </td>"
+                +"<td colspan = '2'> <span id = 'itemname'>" + temp.getProductName() + "</span></td>"
+                +"</tr>"
+                +"<tr>"
+                +"<td><span id = 'price'> Rp."+ (int)temp.getProductPrice() +"</td>"
+                +"<td colspan = '2'> "+ temp.getLikes() +" likes</td>"
+                +"</tr>"
+                +"<tr>"
+                +"<td>" + temp.getProductDescription() + "</td>"
+                +"<td colspan ='2'>" + temp.getPurchase() + " Purchases</td>"
+                +"</tr>"
+                +"<tr height = 22> <td colspan = '3'> </td> </tr>"
+                +"<tr>"
+                +"<td></td>"
+                +"<td class = 'likebuy'> <a href='.' class = 'bluelink'> LIKE </a> </td>"
+                +"<td class = 'likebuy'> <a href='confirmbuy.jsp' class = 'greenlink'> BUY</a></td>"
+                +"</tr></table><br><hr>"
+                 
+                 );
              }
         %>
         
