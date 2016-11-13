@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,6 +19,33 @@ import java.util.*;
  */
 @WebService(serviceName = "MarketPlace")
 public class MarketPlace {
+    private Connection conn;
+    private String url;
+    private String dbName;
+    private String driver;
+    private String userName;
+    private String password;
+    private List<product> allProduct;
+    
+     private void initialize(String password){
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        this.password = password;
+        allProduct = new ArrayList<product>();
+    }
+    
+    private void initialize(String username, String password){
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = userName;
+        this.password = password;
+        allProduct = new ArrayList<product>();
+    }
 
     /**
      * Web service operation
