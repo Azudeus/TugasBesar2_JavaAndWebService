@@ -19,19 +19,39 @@ import java.util.*;
 @WebService(serviceName = "MarketPlace")
 public class MarketPlace {
 
+    private Connection conn;
+    private String url;
+    private String dbName;
+    private String driver;
+    private String userName;
+    private String password;
+    private List<product> allProduct;
+    
+    private void initialize(String password){
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        this.password = password;
+        allProduct = new ArrayList<product>();
+    }
+    
+    private void initialize(String username, String password){
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = userName;
+        this.password = password;
+        allProduct = new ArrayList<product>();
+    }
     /**
      * Web service operation
      */
     @WebMethod(operationName = "GetAllProduct")
     public List<product> GetAllProduct() {
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
-        List<product> allProduct = new ArrayList<product>();
-        
+            initialize("");
             try {
               Class.forName(driver).newInstance();
               conn = DriverManager.getConnection(url+dbName,userName,password);
@@ -64,14 +84,7 @@ public class MarketPlace {
     }
     
      public List<product> SearchProductWithAccount(String username){
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
-        List<product> allProduct = new ArrayList<product>();
-        
+            initialize("");
             try {
               Class.forName(driver).newInstance();
               conn = DriverManager.getConnection(url+dbName,userName,password);
@@ -105,14 +118,7 @@ public class MarketPlace {
      }
      
       public List<product> SearchProductWithProductName(String productname){
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
-        List<product> allProduct = new ArrayList<product>();
-        
+            initialize("");
             try {
               Class.forName(driver).newInstance();
               conn = DriverManager.getConnection(url+dbName,userName,password);
@@ -144,4 +150,108 @@ public class MarketPlace {
             return null;
          
      }
+     
+    private boolean validateToken(int accessToken, account a){
+        //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
+        if(false/*fail*/){
+            return false;
+        }
+        return true;
+    }  
+      
+     /**
+     * 
+     * @param p
+     * @return 
+     */
+    @WebMethod
+    public int AddProduct(int accessToken, account a, product p){
+        //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
+        if(!validateToken(accessToken, a)){
+            return 0;
+        }
+        else{
+            //Copy product
+            //Tambahkan produk ke dalam database
+            try{
+                conn = DriverManager.getConnection(url+dbName,userName,password);
+                System.out.println("Connected to the database");
+                Statement stmt=conn.createStatement();  
+                ResultSet rs=stmt.executeQuery("INSERT INTO product "
+                        + "VALUES ("+p.product_id+","
+                                +p.product_name+","
+                                +p.username+","
+                                +p.product_description+","
+                                +p.product_price+","
+                                +p.likes+","
+                                +p.purchase+","
+                                +p.product_datetime+","
+                                +p.imgsrc+")");
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
+            return 1;
+        }
+    } 
+    
+    /***
+     * 
+     * @param p
+     * @return 
+     */
+    @WebMethod
+    public int DeleteProduct(int accessToken, account a, product p){
+        //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
+        if(!validateToken(accessToken, a)){
+            return 0;
+        }
+        else{
+            //Copy product
+            //Delete produk ke dalam database
+            try{
+                conn = DriverManager.getConnection(url+dbName,userName,password);
+                System.out.println("Connected to the database");
+                Statement stmt=conn.createStatement();  
+                ResultSet rs=stmt.executeQuery("DELETE FROM product "
+                        + "WHERE product_id = "+p.product_id+"");
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
+            return 1;
+        }
+    }
+    
+    /**
+     * 
+     * @param p
+     * @return 
+     */
+    @WebMethod
+    public int EditProduct(int accessToken, account a, product p, 
+            String newDesc, String newPrice){
+        //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
+        if(!validateToken(accessToken, a)){
+            return 0;
+        }
+        else{
+            //Copy product
+            //Tambahkan produk ke dalam database
+            try{
+                conn = DriverManager.getConnection(url+dbName,userName,password);
+                System.out.println("Connected to the database");
+                Statement stmt=conn.createStatement();  
+                ResultSet rs=stmt.executeQuery("UPDATE product "
+                        + "SET product_description = "
+                                +newDesc+", product_price = "
+                                +newPrice+""
+                        + "WHERE product_id = "+p.product_id+")");
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
+            return 1;
+        }
+    }
 }

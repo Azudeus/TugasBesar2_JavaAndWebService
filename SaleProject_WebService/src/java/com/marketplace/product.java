@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
+//import java.util.Date;
 
 
 /**
@@ -35,7 +35,36 @@ public class product {
     @XmlElement(name = "purchase")
     public int purchase;
     @XmlElement(name = "product_datetime")
-    public int product_datetime;
+    public long product_datetime;
     @XmlElement(name = "imgsrc")
-    public String imgsrc;  
+    public String imgsrc;
+    
+    public product(){
+        //donothing
+    }
+    
+    public product(int id, String name, String username, String desc, 
+            double price, String imgsrc){
+        product_id = id;
+        product_name = name;
+        this.username = username;
+        product_description = desc;
+        product_price = price;
+        likes = 0;
+        purchase = 0;
+        product_datetime = System.currentTimeMillis();
+        this.imgsrc = imgsrc;
+    }
+    
+    public product(product anotherProduct){
+        product_id = anotherProduct.product_id;
+        product_name = anotherProduct.product_name;
+        username = anotherProduct.username;
+        product_description = anotherProduct.product_description;
+        product_price = anotherProduct.product_price;
+        likes = anotherProduct.likes;
+        purchase = anotherProduct.purchase;
+        product_datetime = anotherProduct.product_datetime;
+        imgsrc = anotherProduct.imgsrc;
+    }
 }
