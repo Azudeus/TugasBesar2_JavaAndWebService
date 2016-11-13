@@ -217,7 +217,7 @@ public class MarketPlace {
     public account GetAccWithAccountId(int accountId){
         Connection conn = null;
         String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
+        String dbName = "SaleAccount";
         String driver = "com.mysql.jdbc.Driver";
         String userName = "root";
         String password = "";
@@ -340,6 +340,34 @@ public class MarketPlace {
             
 
         } catch (Exception e){
+            return 0;
+            
+        }
+        
+    }
+    
+    @WebMethod(operationName = "AddPurchase")
+    public int AddPurchase(String productId ,String accountId, String consignee, String full_address, String postal_code, String phone_number, String credit_number, String credit_veri, String quantity, String product_name, String product_username, String product_description, String product_price,String imgsrc) {
+        Connection conn = null;
+        String url = "jdbc:mysql://localhost:3306/";
+        String dbName = "SaleProject";
+        String driver = "com.mysql.jdbc.Driver";
+        String userName = "root";
+        String password = "";
+              
+         try {
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url+dbName,userName,password);
+            System.out.println("Connected to the database");
+            Statement stmt=conn.createStatement();  
+            int rs=stmt.executeUpdate("INSERT INTO purchases(product_id,account_id, consignee ,full_address,postal_code,phone_number,credit_number,credit_veri,quantity,product_name,product_username,product_description,product_price,imgsrc)  VALUES ("+ productId + ","+ accountId + ",'" + consignee +  "', '" + full_address +"','"+ postal_code +"','" + phone_number + "','"+ credit_number +"',"+ credit_veri +","+quantity +",'"+ product_name +"','"+ product_username +"','" + product_description+ "',"+product_price+",'"+ imgsrc+"'); ");
+            rs=stmt.executeUpdate("UPDATE product SET purchase = purchase + 1 WHERE product_id =" + productId +";");
+           // System.out.println("INSERT INTO purchases(product_id,account_id, consignee ,full_address,postal_code,phone_number,credit_number,credit_veri,quantity,product_name,product_username,product_description,product_price,imgsrc) VALUES ("+ productId + ","+ accountId + ",'" + consignee +   "', '" + full_address +"','"+ postal_code +"','" + phone_number + "','"+ credit_number +"',"+ credit_veri +","+quantity +",'"+ product_name +"','"+ product_username +"','" + product_description+ "',"+product_price+"); ");
+            return 1;
+            
+
+        } catch (Exception e){
+            System.out.println(e);
             return 0;
             
         }

@@ -26,6 +26,8 @@ public class ObjectFactory {
 
     private final static QName _AddLike_QNAME = new QName("http://marketplace.com/", "AddLike");
     private final static QName _AddLikeResponse_QNAME = new QName("http://marketplace.com/", "AddLikeResponse");
+    private final static QName _AddPurchase_QNAME = new QName("http://marketplace.com/", "AddPurchase");
+    private final static QName _AddPurchaseResponse_QNAME = new QName("http://marketplace.com/", "AddPurchaseResponse");
     private final static QName _CheckLike_QNAME = new QName("http://marketplace.com/", "CheckLike");
     private final static QName _CheckLikeResponse_QNAME = new QName("http://marketplace.com/", "CheckLikeResponse");
     private final static QName _DelLike_QNAME = new QName("http://marketplace.com/", "DelLike");
@@ -62,6 +64,22 @@ public class ObjectFactory {
      */
     public AddLikeResponse createAddLikeResponse() {
         return new AddLikeResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddPurchase }
+     * 
+     */
+    public AddPurchase createAddPurchase() {
+        return new AddPurchase();
+    }
+
+    /**
+     * Create an instance of {@link AddPurchaseResponse }
+     * 
+     */
+    public AddPurchaseResponse createAddPurchaseResponse() {
+        return new AddPurchaseResponse();
     }
 
     /**
@@ -208,6 +226,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://marketplace.com/", name = "AddLikeResponse")
     public JAXBElement<AddLikeResponse> createAddLikeResponse(AddLikeResponse value) {
         return new JAXBElement<AddLikeResponse>(_AddLikeResponse_QNAME, AddLikeResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddPurchase }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "AddPurchase")
+    public JAXBElement<AddPurchase> createAddPurchase(AddPurchase value) {
+        return new JAXBElement<AddPurchase>(_AddPurchase_QNAME, AddPurchase.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddPurchaseResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "AddPurchaseResponse")
+    public JAXBElement<AddPurchaseResponse> createAddPurchaseResponse(AddPurchaseResponse value) {
+        return new JAXBElement<AddPurchaseResponse>(_AddPurchaseResponse_QNAME, AddPurchaseResponse.class, null, value);
     }
 
     /**

@@ -17,7 +17,7 @@
     <body>
         <%@include file="header.jsp" %>  
         
-            <%-- start web service invocation --%><hr/>
+            <%-- start web service invocation --%>
     <%
     int accountId = Integer.parseInt(request.getParameter("account_id"));
     int productId = Integer.parseInt(request.getParameter("product_id"));
@@ -37,7 +37,7 @@
 	// TODO handle custom exceptions here
     }
     %>
-    <%-- end web service invocation --%><hr/>
+    <%-- end web service invocation --%>
 
 
 
@@ -55,7 +55,7 @@
     </pre>
     <div class = 'font18'>
     Consignee<br>
-    <input name="consignee" type="text" required class = "width100" value = "<%out.println(currentAccount.getName());%>">
+    <input name="consignee" type="text" required class = "width100" value = "<%out.print(currentAccount.getName());%>">
     <br><br>
     Full Address<br>
     <input name="full_address" type="text" required class = "tworow width100" value = "<%out.println(currentAccount.getAddress());%>" >
@@ -71,8 +71,13 @@
     <br><br>
     3 Digits Card Verification Value
     <input name="credit_veri" type="text" required class = "width100">
-    <input name="account_id" type="hidden" value = "<%out.println(accountId);%>" >
-    <input name="product_id" type="hidden" value = "<%out.println(productId);%>" >
+    <input name="account_id" type="hidden" value = "<%out.print(accountId);%>" >
+    <input name="product_id" type="hidden" value = "<%out.print(productId);%>" >
+    <input name="product_name" type ="hidden" value = "<%out.println(currentProduct.getProductName());%>">
+    <input name="product_username" type ="hidden" value = "<%out.println(currentProduct.getUsername());%>">
+    <input name="product_description" type ="hidden" value = "<%out.println(currentProduct.getProductDescription());%>">
+    <input name="product_price" type ="hidden" value = "<%out.println(currentProduct.getProductPrice());%>">
+    <input name="imgsrc" type ="hidden" value = "<%out.println(currentProduct.getImgsrc());%>">
 
     <br><br>
     <div class = "right">
