@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Accountt")
 public class account {
-    @XmlElement(name = "accountt_id")
+    @XmlElement(name = "account_id")
     public int account_id;
     @XmlElement(name = "username")
     public String username;

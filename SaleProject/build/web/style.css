@@ -198,3 +198,14 @@ color: black;}
 #formField {
 	width : 100%;
 }
+
+.linkButton {
+    font : 20px arial;
+    text-transform : uppercase;
+    font-weight : bold;
+    width : 80px;
+     background: none;
+     border: none;
+     cursor: pointer;
+
+}

@@ -150,7 +150,6 @@ public class MarketPlace {
             return null;
          
      }
-     
     private boolean validateToken(int accessToken, account a){
         //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
         if(false/*fail*/){
@@ -164,7 +163,7 @@ public class MarketPlace {
      * @param p
      * @return 
      */
-    @WebMethod
+    @WebMethod(operationName = "AddProd")
     public int AddProduct(int accessToken, account a, product p){
         //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
         if(!validateToken(accessToken, a)){
@@ -200,7 +199,7 @@ public class MarketPlace {
      * @param p
      * @return 
      */
-    @WebMethod
+    @WebMethod(operationName = "DelProd")
     public int DeleteProduct(int accessToken, account a, product p){
         //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
         if(!validateToken(accessToken, a)){
@@ -228,7 +227,7 @@ public class MarketPlace {
      * @param p
      * @return 
      */
-    @WebMethod
+    @WebMethod(operationName = "EditProd")
     public int EditProduct(int accessToken, account a, product p, 
             String newDesc, String newPrice){
         //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
@@ -253,5 +252,97 @@ public class MarketPlace {
             }
             return 1;
         }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "CheckLike")
+    public int CheckLike(int productId, int accountId) {
+        Connection conn = null;
+        String url = "jdbc:mysql://localhost:3306/";
+        String dbName = "SaleProject";
+        String driver = "com.mysql.jdbc.Driver";
+        String userName = "root";
+        String password = "";
+
+        
+        try {
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url+dbName,userName,password);
+            System.out.println("Connected to the database");
+            Statement stmt=conn.createStatement();  
+            ResultSet rs=stmt.executeQuery("SELECT EXISTS(SELECT * FROM likes where product_id ="+ productId +" and account_id =" + accountId + ") as exist;");
+            while(rs.next()){
+                return rs.getInt("exist");
+            }
+            
+            
+
+        } catch (Exception e){
+            
+            
+        }
+        
+        //TODO write your implementation code here:
+        return -1;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "AddLike")
+    public int AddLike(int productId ,int accountId ) {
+        Connection conn = null;
+        String url = "jdbc:mysql://localhost:3306/";
+        String dbName = "SaleProject";
+        String driver = "com.mysql.jdbc.Driver";
+        String userName = "root";
+        String password = "";
+              
+         try {
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url+dbName,userName,password);
+            System.out.println("Connected to the database");
+            Statement stmt=conn.createStatement();  
+         
+            int rs=stmt.executeUpdate("UPDATE product SET likes = likes + 1 WHERE product_id =" + productId +";");
+            
+            rs=stmt.executeUpdate("INSERT INTO likes(product_id, account_id) VALUES ("+ productId + ","+ accountId + ");");
+            return 1;
+            
+
+        } catch (Exception e){
+            return 0;
+            
+        }
+        
+    }
+    @WebMethod(operationName = "DelLike")
+    public int DelLike(int productId ,int accountId ) {
+        Connection conn = null;
+        String url = "jdbc:mysql://localhost:3306/";
+        String dbName = "SaleProject";
+        String driver = "com.mysql.jdbc.Driver";
+        String userName = "root";
+        String password = "";
+              
+         try {
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url+dbName,userName,password);
+            System.out.println("Connected to the database");
+            Statement stmt=conn.createStatement();  
+           
+            int rs=stmt.executeUpdate("UPDATE product SET likes = likes - 1 WHERE product_id =" + productId +";");
+            
+            rs=stmt.executeUpdate("DELETE FROM likes where product_id = "+ productId + " and account_id = "+ accountId + ";");
+            return 1;
+            
+
+        } catch (Exception e){
+            return 0;
+            
+        }
+        
     }
 }
