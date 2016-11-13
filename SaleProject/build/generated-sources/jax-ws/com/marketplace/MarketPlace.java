@@ -42,6 +42,21 @@ public interface MarketPlace {
 
     /**
      * 
+     * @param arg0
+     * @return
+     *     returns com.marketplace.Account
+     */
+    @WebMethod(operationName = "GetAccWithAccountId")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "GetAccWithAccountId", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAccWithAccountId")
+    @ResponseWrapper(localName = "GetAccWithAccountIdResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAccWithAccountIdResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/GetAccWithAccountIdRequest", output = "http://marketplace.com/MarketPlace/GetAccWithAccountIdResponse")
+    public Account getAccWithAccountId(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
+
+    /**
+     * 
      * @param arg1
      * @param arg0
      * @return
@@ -87,6 +102,21 @@ public interface MarketPlace {
     @ResponseWrapper(localName = "GetAllProductResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAllProductResponse")
     @Action(input = "http://marketplace.com/MarketPlace/GetAllProductRequest", output = "http://marketplace.com/MarketPlace/GetAllProductResponse")
     public List<Product> getAllProduct();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.marketplace.Product
+     */
+    @WebMethod(operationName = "SearchProductWithProductId")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "SearchProductWithProductId", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductId")
+    @ResponseWrapper(localName = "SearchProductWithProductIdResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductIdResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/SearchProductWithProductIdRequest", output = "http://marketplace.com/MarketPlace/SearchProductWithProductIdResponse")
+    public Product searchProductWithProductId(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
 
     /**
      * 

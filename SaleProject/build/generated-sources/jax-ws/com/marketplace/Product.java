@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="product_price" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *         &lt;element name="likes" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="purchase" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="product_datetime" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="product_datetime" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="imgsrc" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -60,7 +60,7 @@ public class Product {
     protected int likes;
     protected int purchase;
     @XmlElement(name = "product_datetime")
-    protected int productDatetime;
+    protected long productDatetime;
     protected String imgsrc;
 
     /**
@@ -203,7 +203,7 @@ public class Product {
      * Gets the value of the productDatetime property.
      * 
      */
-    public int getProductDatetime() {
+    public long getProductDatetime() {
         return productDatetime;
     }
 
@@ -211,7 +211,7 @@ public class Product {
      * Sets the value of the productDatetime property.
      * 
      */
-    public void setProductDatetime(int value) {
+    public void setProductDatetime(long value) {
         this.productDatetime = value;
     }
 

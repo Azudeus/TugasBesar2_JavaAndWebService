@@ -30,10 +30,14 @@ public class ObjectFactory {
     private final static QName _CheckLikeResponse_QNAME = new QName("http://marketplace.com/", "CheckLikeResponse");
     private final static QName _DelLike_QNAME = new QName("http://marketplace.com/", "DelLike");
     private final static QName _DelLikeResponse_QNAME = new QName("http://marketplace.com/", "DelLikeResponse");
+    private final static QName _GetAccWithAccountId_QNAME = new QName("http://marketplace.com/", "GetAccWithAccountId");
+    private final static QName _GetAccWithAccountIdResponse_QNAME = new QName("http://marketplace.com/", "GetAccWithAccountIdResponse");
     private final static QName _GetAllProduct_QNAME = new QName("http://marketplace.com/", "GetAllProduct");
     private final static QName _GetAllProductResponse_QNAME = new QName("http://marketplace.com/", "GetAllProductResponse");
     private final static QName _SearchProductWithAccount_QNAME = new QName("http://marketplace.com/", "SearchProductWithAccount");
     private final static QName _SearchProductWithAccountResponse_QNAME = new QName("http://marketplace.com/", "SearchProductWithAccountResponse");
+    private final static QName _SearchProductWithProductId_QNAME = new QName("http://marketplace.com/", "SearchProductWithProductId");
+    private final static QName _SearchProductWithProductIdResponse_QNAME = new QName("http://marketplace.com/", "SearchProductWithProductIdResponse");
     private final static QName _SearchProductWithProductName_QNAME = new QName("http://marketplace.com/", "SearchProductWithProductName");
     private final static QName _SearchProductWithProductNameResponse_QNAME = new QName("http://marketplace.com/", "SearchProductWithProductNameResponse");
 
@@ -93,6 +97,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAccWithAccountId }
+     * 
+     */
+    public GetAccWithAccountId createGetAccWithAccountId() {
+        return new GetAccWithAccountId();
+    }
+
+    /**
+     * Create an instance of {@link GetAccWithAccountIdResponse }
+     * 
+     */
+    public GetAccWithAccountIdResponse createGetAccWithAccountIdResponse() {
+        return new GetAccWithAccountIdResponse();
+    }
+
+    /**
      * Create an instance of {@link GetAllProduct }
      * 
      */
@@ -125,6 +145,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SearchProductWithProductId }
+     * 
+     */
+    public SearchProductWithProductId createSearchProductWithProductId() {
+        return new SearchProductWithProductId();
+    }
+
+    /**
+     * Create an instance of {@link SearchProductWithProductIdResponse }
+     * 
+     */
+    public SearchProductWithProductIdResponse createSearchProductWithProductIdResponse() {
+        return new SearchProductWithProductIdResponse();
+    }
+
+    /**
      * Create an instance of {@link SearchProductWithProductName }
      * 
      */
@@ -146,6 +182,14 @@ public class ObjectFactory {
      */
     public Product createProduct() {
         return new Product();
+    }
+
+    /**
+     * Create an instance of {@link Account }
+     * 
+     */
+    public Account createAccount() {
+        return new Account();
     }
 
     /**
@@ -203,6 +247,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAccWithAccountId }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "GetAccWithAccountId")
+    public JAXBElement<GetAccWithAccountId> createGetAccWithAccountId(GetAccWithAccountId value) {
+        return new JAXBElement<GetAccWithAccountId>(_GetAccWithAccountId_QNAME, GetAccWithAccountId.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAccWithAccountIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "GetAccWithAccountIdResponse")
+    public JAXBElement<GetAccWithAccountIdResponse> createGetAccWithAccountIdResponse(GetAccWithAccountIdResponse value) {
+        return new JAXBElement<GetAccWithAccountIdResponse>(_GetAccWithAccountIdResponse_QNAME, GetAccWithAccountIdResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAllProduct }{@code >}}
      * 
      */
@@ -236,6 +298,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://marketplace.com/", name = "SearchProductWithAccountResponse")
     public JAXBElement<SearchProductWithAccountResponse> createSearchProductWithAccountResponse(SearchProductWithAccountResponse value) {
         return new JAXBElement<SearchProductWithAccountResponse>(_SearchProductWithAccountResponse_QNAME, SearchProductWithAccountResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchProductWithProductId }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "SearchProductWithProductId")
+    public JAXBElement<SearchProductWithProductId> createSearchProductWithProductId(SearchProductWithProductId value) {
+        return new JAXBElement<SearchProductWithProductId>(_SearchProductWithProductId_QNAME, SearchProductWithProductId.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchProductWithProductIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "SearchProductWithProductIdResponse")
+    public JAXBElement<SearchProductWithProductIdResponse> createSearchProductWithProductIdResponse(SearchProductWithProductIdResponse value) {
+        return new JAXBElement<SearchProductWithProductIdResponse>(_SearchProductWithProductIdResponse_QNAME, SearchProductWithProductIdResponse.class, null, value);
     }
 
     /**
