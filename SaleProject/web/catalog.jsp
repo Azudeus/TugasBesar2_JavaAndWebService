@@ -60,12 +60,12 @@
         <% 
               for(int i = 0; i < Products.size(); i++){
                  Product temp = Products.get(i);
-                String dateAsText = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(temp.getProductDatetime() * 1000L));
+       
                 com.marketplace.MarketPlace_Service service = new com.marketplace.MarketPlace_Service();
                 com.marketplace.MarketPlace port = service.getMarketPlacePort();
                 int CheckLike = port.checkLike(temp.getProductId(), account_id);
                  out.println(
-                "<p id = 'product'><b>" + temp.getUsername() +"</b> <br> added this on" + dateAsText +"<hr>"
+                "<p id = 'product'><b>" + temp.getUsername() +"</b> <br> added this on " + temp.getProductDatetime()  +"<hr>"
                 +"<table class = 'producttable'>"
                 +"<tr>"
                 +"<td rowspan = '5' width = 128px> <img src = 'img/" + temp.getImgsrc() + "' style = 'width:128px;height:128px;' > </td>"

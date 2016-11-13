@@ -25,7 +25,7 @@ public class MarketPlace {
     private String driver;
     private String userName;
     private String password;
-    private List<product> allProduct;
+
     
      private void initialize(String password){
         conn = null;
@@ -34,7 +34,7 @@ public class MarketPlace {
         driver = "com.mysql.jdbc.Driver";
         userName = "root";
         this.password = password;
-        allProduct = new ArrayList<product>();
+        
     }
     
     private void initialize(String username, String password){
@@ -42,9 +42,9 @@ public class MarketPlace {
         url = "jdbc:mysql://localhost:3306/";
         dbName = "SaleProject";
         driver = "com.mysql.jdbc.Driver";
-        userName = userName;
+        userName = username;
         this.password = password;
-        allProduct = new ArrayList<product>();
+      
     }
 
     /**
@@ -52,7 +52,7 @@ public class MarketPlace {
      */
     @WebMethod(operationName = "GetAllProduct")
     public List<product> GetAllProduct() {
-        Connection conn = null;
+        conn = null;
         url = "jdbc:mysql://localhost:3306/";
         dbName = "SaleProject";
         driver = "com.mysql.jdbc.Driver";
@@ -77,8 +77,10 @@ public class MarketPlace {
                 temp.product_price = rs.getDouble("product_price");
                 temp.likes=rs.getInt("likes");
                 temp.purchase = rs.getInt("purchase");
-                temp.product_datetime = rs.getInt("product_datetime");
+                temp.product_datetime = rs.getString("product_datetime");
                 temp.imgsrc = rs.getString("imgsrc");
+                
+                System.out.println(temp.product_datetime);
                 allProduct.add(temp);      
               } 
               conn.close();
@@ -92,12 +94,12 @@ public class MarketPlace {
     }
     
      public List<product> SearchProductWithAccount(String username){
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
         List<product> allProduct = new ArrayList<product>();
         
             try {
@@ -117,14 +119,14 @@ public class MarketPlace {
                 temp.product_price = rs.getDouble("product_price");
                 temp.likes=rs.getInt("likes");
                 temp.purchase = rs.getInt("purchase");
-                temp.product_datetime = rs.getInt("product_datetime");
+                temp.product_datetime = rs.getString("product_datetime");
                 temp.imgsrc = rs.getString("imgsrc");
                 allProduct.add(temp);      
               } 
               conn.close();
               return allProduct;
             } catch (Exception e) {
-                System.out.println(e);
+                
                 
                 
             }
@@ -133,12 +135,12 @@ public class MarketPlace {
      }
      
            public List<product> SearchProductWithProductName(String productname){
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
         List<product> allProduct = new ArrayList<product>();
         
             try {
@@ -158,7 +160,7 @@ public class MarketPlace {
                 temp.product_price = rs.getDouble("product_price");
                 temp.likes=rs.getInt("likes");
                 temp.purchase = rs.getInt("purchase");
-                temp.product_datetime = rs.getInt("product_datetime") *1000;
+                temp.product_datetime = rs.getString("product_datetime");
                 temp.imgsrc = rs.getString("imgsrc");
                 allProduct.add(temp);      
               } 
@@ -174,12 +176,12 @@ public class MarketPlace {
      }
      
      public product SearchProductWithProductId(int productId){
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
  
         
             try {
@@ -199,7 +201,7 @@ public class MarketPlace {
                 temp.product_price = rs.getDouble("product_price");
                 temp.likes=rs.getInt("likes");
                 temp.purchase = rs.getInt("purchase");
-                temp.product_datetime = rs.getInt("product_datetime") *1000;
+                temp.product_datetime = rs.getString("product_datetime");
                 temp.imgsrc = rs.getString("imgsrc");
                 return temp;
               } 
@@ -215,12 +217,12 @@ public class MarketPlace {
      }
       
     public account GetAccWithAccountId(int accountId){
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleAccount";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleAccount";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
  
         
             try {
@@ -259,12 +261,12 @@ public class MarketPlace {
      */
     @WebMethod(operationName = "CheckLike")
     public int CheckLike(int productId, int accountId) {
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
 
         
         try {
@@ -293,12 +295,12 @@ public class MarketPlace {
      */
     @WebMethod(operationName = "AddLike")
     public int AddLike(int productId ,int accountId ) {
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
               
          try {
             Class.forName(driver).newInstance();
@@ -320,12 +322,12 @@ public class MarketPlace {
     }
     @WebMethod(operationName = "DelLike")
     public int DelLike(int productId ,int accountId ) {
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
               
          try {
             Class.forName(driver).newInstance();
@@ -348,12 +350,12 @@ public class MarketPlace {
     
     @WebMethod(operationName = "AddPurchase")
     public int AddPurchase(String productId ,String accountId, String consignee, String full_address, String postal_code, String phone_number, String credit_number, String credit_veri, String quantity, String product_name, String product_username, String product_description, String product_price,String imgsrc) {
-        Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
               
          try {
             Class.forName(driver).newInstance();

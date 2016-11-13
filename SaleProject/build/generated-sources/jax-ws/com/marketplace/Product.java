@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="product_price" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *         &lt;element name="likes" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="purchase" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="product_datetime" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="product_datetime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="imgsrc" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -60,7 +60,7 @@ public class Product {
     protected int likes;
     protected int purchase;
     @XmlElement(name = "product_datetime")
-    protected long productDatetime;
+    protected String productDatetime;
     protected String imgsrc;
 
     /**
@@ -202,16 +202,24 @@ public class Product {
     /**
      * Gets the value of the productDatetime property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public long getProductDatetime() {
+    public String getProductDatetime() {
         return productDatetime;
     }
 
     /**
      * Sets the value of the productDatetime property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setProductDatetime(long value) {
+    public void setProductDatetime(String value) {
         this.productDatetime = value;
     }
 
