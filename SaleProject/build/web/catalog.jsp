@@ -17,6 +17,7 @@
         <%-- set variable --%>
         <%
             List<Product> Products;
+            int account_id = 1;
         %>
          <%-- start web service invocation --%>
          <%
@@ -53,10 +54,16 @@
         </table>
         </form>
 
+
+   
+
         <% 
               for(int i = 0; i < Products.size(); i++){
                  Product temp = Products.get(i);
                 String dateAsText = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(temp.getProductDatetime() * 1000L));
+                com.marketplace.MarketPlace_Service service = new com.marketplace.MarketPlace_Service();
+                com.marketplace.MarketPlace port = service.getMarketPlacePort();
+                int CheckLike = port.checkLike(temp.getProductId(), account_id);
                  out.println(
                 "<p id = 'product'><b>" + temp.getUsername() +"</b> <br> added this on" + dateAsText +"<hr>"
                 +"<table class = 'producttable'>"
@@ -75,8 +82,14 @@
                 +"<tr height = 22> <td colspan = '3'> </td> </tr>"
                 +"<tr>"
                 +"<td></td>"
-                +"<td class = 'likebuy'> <a href='.' class = 'bluelink'> LIKE </a> </td>"
-                +"<td class = 'likebuy'> <a href='confirmbuy.jsp' class = 'greenlink'> BUY</a></td>"
+                +"<td class = 'likebuy'> <form action = 'likes.jsp'> <input type='hidden' name='account_id' value=" + account_id +"> <input type='hidden' name='product_id' value="+temp.getProductId()+">");
+                if(CheckLike > 0)
+                    out.println("<input type='hidden' name='type' value='del'> <input type='submit' value='liked' class = 'redlink linkButton'>");     
+                else
+                    out.println("<input type='hidden' name='type' value='add'> <input type='submit' value='like' class = 'linkButton bluelink '>");  
+                out.println("</form></td>"
+                +"<td class = 'likebuy'> <form action = 'confirmbuy.jsp'><input type='hidden' name='account_id' value=" + account_id +"> <input type='hidden' name='product_id' value="+temp.getProductId()+">"
+                +"<input type='submit' value='BUY' class = 'greenlink linkButton'></form></td>"
                 +"</tr></table><br><hr>"
                  
                  );
