@@ -53,11 +53,11 @@ public class MarketPlace {
     @WebMethod(operationName = "GetAllProduct")
     public List<product> GetAllProduct() {
         Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "SaleProject";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "";
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
         List<product> allProduct = new ArrayList<product>();
         
             try {
