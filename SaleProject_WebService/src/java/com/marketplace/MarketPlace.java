@@ -157,13 +157,13 @@ public class MarketPlace {
         }
         return true;
     }  
-      
+    
      /**
      * 
      * @param p
      * @return 
      */
-    @WebMethod(operationName = "AddProd")
+    @WebMethod(operationName = "AddProduct")
     public int AddProduct(int accessToken, account a, product p){
         //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
         if(!validateToken(accessToken, a)){
@@ -200,7 +200,7 @@ public class MarketPlace {
      * @return 
      */
     @WebMethod(operationName = "DelProd")
-    public int DeleteProduct(int accessToken, account a, product p){
+    public int DeleteProd(int accessToken, account a, product p){
         //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
         if(!validateToken(accessToken, a)){
             return 0;
@@ -228,7 +228,7 @@ public class MarketPlace {
      * @return 
      */
     @WebMethod(operationName = "EditProd")
-    public int EditProduct(int accessToken, account a, product p, 
+    public int EditProd(int accessToken, account a, product p, 
             String newDesc, String newPrice){
         //Untuk accessToken yang diberikan, cek kevalidan accessToken melalui identity service
         if(!validateToken(accessToken, a)){
@@ -345,4 +345,6 @@ public class MarketPlace {
         }
         
     }
+
+    
 }
