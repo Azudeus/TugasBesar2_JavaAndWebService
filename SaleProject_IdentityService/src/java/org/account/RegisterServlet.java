@@ -60,11 +60,24 @@ public class RegisterServlet extends HttpServlet {
             ps.setInt(6, postal);
             ps.setInt(7, number);
             
-            int i =ps.executeUpdate();
-            if (i>0) {
-                RequestDispatcher rs = request.getRequestDispatcher("Welcome");
-            } else {
-                out.println("Error Registration");
+            PreparedStatement dupecheck = con.prepareStatement
+                   ("Select * from account where email = ? and password = ?");
+            dupecheck.setString(1, email);
+            dupecheck.setString(2, password);
+            ResultSet check =dupecheck.executeQuery();
+            if (!check.next()) {
+                int i =ps.executeUpdate();
+                if (i>0) {
+                    RequestDispatcher rs = request.getRequestDispatcher("Welcome");
+                    rs.forward(request,response);
+                } else {
+                    out.println("Error Registration");
+                    RequestDispatcher rs = request.getRequestDispatcher("");
+                    rs.include(request,response);
+                }
+            }else {
+                out.println("There is another same account"
+                        + "");
                 RequestDispatcher rs = request.getRequestDispatcher("");
                 rs.include(request,response);
             }

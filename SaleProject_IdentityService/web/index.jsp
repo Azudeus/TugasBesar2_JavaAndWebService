@@ -12,11 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Login Page</h1>
         <form method="post" action="LoginServlet">
         Email ID:<input type="text" name="email" /><br/>
         Password:<input type="password" name="password" /><br/>
         <input type="submit" value="login" />
         </form>
+        <a href="register.jsp">Click here to register</a>
     </body>
 </html>
