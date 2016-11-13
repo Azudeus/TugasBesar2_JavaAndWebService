@@ -10,6 +10,18 @@
 <message name="SearchProductWithProductNameResponse">
 <part name="parameters" element="tns:SearchProductWithProductNameResponse"/>
 </message>
+<message name="DelLike">
+<part name="parameters" element="tns:DelLike"/>
+</message>
+<message name="DelLikeResponse">
+<part name="parameters" element="tns:DelLikeResponse"/>
+</message>
+<message name="CheckLike">
+<part name="parameters" element="tns:CheckLike"/>
+</message>
+<message name="CheckLikeResponse">
+<part name="parameters" element="tns:CheckLikeResponse"/>
+</message>
 <message name="GetAllProduct">
 <part name="parameters" element="tns:GetAllProduct"/>
 </message>
@@ -22,10 +34,24 @@
 <message name="SearchProductWithAccountResponse">
 <part name="parameters" element="tns:SearchProductWithAccountResponse"/>
 </message>
+<message name="AddLike">
+<part name="parameters" element="tns:AddLike"/>
+</message>
+<message name="AddLikeResponse">
+<part name="parameters" element="tns:AddLikeResponse"/>
+</message>
 <portType name="MarketPlace">
 <operation name="SearchProductWithProductName">
 <input wsam:Action="http://marketplace.com/MarketPlace/SearchProductWithProductNameRequest" message="tns:SearchProductWithProductName"/>
 <output wsam:Action="http://marketplace.com/MarketPlace/SearchProductWithProductNameResponse" message="tns:SearchProductWithProductNameResponse"/>
+</operation>
+<operation name="DelLike">
+<input wsam:Action="http://marketplace.com/MarketPlace/DelLikeRequest" message="tns:DelLike"/>
+<output wsam:Action="http://marketplace.com/MarketPlace/DelLikeResponse" message="tns:DelLikeResponse"/>
+</operation>
+<operation name="CheckLike">
+<input wsam:Action="http://marketplace.com/MarketPlace/CheckLikeRequest" message="tns:CheckLike"/>
+<output wsam:Action="http://marketplace.com/MarketPlace/CheckLikeResponse" message="tns:CheckLikeResponse"/>
 </operation>
 <operation name="GetAllProduct">
 <input wsam:Action="http://marketplace.com/MarketPlace/GetAllProductRequest" message="tns:GetAllProduct"/>
@@ -34,6 +60,10 @@
 <operation name="SearchProductWithAccount">
 <input wsam:Action="http://marketplace.com/MarketPlace/SearchProductWithAccountRequest" message="tns:SearchProductWithAccount"/>
 <output wsam:Action="http://marketplace.com/MarketPlace/SearchProductWithAccountResponse" message="tns:SearchProductWithAccountResponse"/>
+</operation>
+<operation name="AddLike">
+<input wsam:Action="http://marketplace.com/MarketPlace/AddLikeRequest" message="tns:AddLike"/>
+<output wsam:Action="http://marketplace.com/MarketPlace/AddLikeResponse" message="tns:AddLikeResponse"/>
 </operation>
 </portType>
 <binding name="MarketPlacePortBinding" type="tns:MarketPlace">
@@ -47,6 +77,24 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="DelLike">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="CheckLike">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="GetAllProduct">
 <soap:operation soapAction=""/>
 <input>
@@ -57,6 +105,15 @@
 </output>
 </operation>
 <operation name="SearchProductWithAccount">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="AddLike">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

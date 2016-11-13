@@ -24,6 +24,12 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _AddLike_QNAME = new QName("http://marketplace.com/", "AddLike");
+    private final static QName _AddLikeResponse_QNAME = new QName("http://marketplace.com/", "AddLikeResponse");
+    private final static QName _CheckLike_QNAME = new QName("http://marketplace.com/", "CheckLike");
+    private final static QName _CheckLikeResponse_QNAME = new QName("http://marketplace.com/", "CheckLikeResponse");
+    private final static QName _DelLike_QNAME = new QName("http://marketplace.com/", "DelLike");
+    private final static QName _DelLikeResponse_QNAME = new QName("http://marketplace.com/", "DelLikeResponse");
     private final static QName _GetAllProduct_QNAME = new QName("http://marketplace.com/", "GetAllProduct");
     private final static QName _GetAllProductResponse_QNAME = new QName("http://marketplace.com/", "GetAllProductResponse");
     private final static QName _SearchProductWithAccount_QNAME = new QName("http://marketplace.com/", "SearchProductWithAccount");
@@ -36,6 +42,54 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link AddLike }
+     * 
+     */
+    public AddLike createAddLike() {
+        return new AddLike();
+    }
+
+    /**
+     * Create an instance of {@link AddLikeResponse }
+     * 
+     */
+    public AddLikeResponse createAddLikeResponse() {
+        return new AddLikeResponse();
+    }
+
+    /**
+     * Create an instance of {@link CheckLike }
+     * 
+     */
+    public CheckLike createCheckLike() {
+        return new CheckLike();
+    }
+
+    /**
+     * Create an instance of {@link CheckLikeResponse }
+     * 
+     */
+    public CheckLikeResponse createCheckLikeResponse() {
+        return new CheckLikeResponse();
+    }
+
+    /**
+     * Create an instance of {@link DelLike }
+     * 
+     */
+    public DelLike createDelLike() {
+        return new DelLike();
+    }
+
+    /**
+     * Create an instance of {@link DelLikeResponse }
+     * 
+     */
+    public DelLikeResponse createDelLikeResponse() {
+        return new DelLikeResponse();
     }
 
     /**
@@ -92,6 +146,60 @@ public class ObjectFactory {
      */
     public Product createProduct() {
         return new Product();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddLike }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "AddLike")
+    public JAXBElement<AddLike> createAddLike(AddLike value) {
+        return new JAXBElement<AddLike>(_AddLike_QNAME, AddLike.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddLikeResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "AddLikeResponse")
+    public JAXBElement<AddLikeResponse> createAddLikeResponse(AddLikeResponse value) {
+        return new JAXBElement<AddLikeResponse>(_AddLikeResponse_QNAME, AddLikeResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckLike }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "CheckLike")
+    public JAXBElement<CheckLike> createCheckLike(CheckLike value) {
+        return new JAXBElement<CheckLike>(_CheckLike_QNAME, CheckLike.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckLikeResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "CheckLikeResponse")
+    public JAXBElement<CheckLikeResponse> createCheckLikeResponse(CheckLikeResponse value) {
+        return new JAXBElement<CheckLikeResponse>(_CheckLikeResponse_QNAME, CheckLikeResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DelLike }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "DelLike")
+    public JAXBElement<DelLike> createDelLike(DelLike value) {
+        return new JAXBElement<DelLike>(_DelLike_QNAME, DelLike.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DelLikeResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "DelLikeResponse")
+    public JAXBElement<DelLikeResponse> createDelLikeResponse(DelLikeResponse value) {
+        return new JAXBElement<DelLikeResponse>(_DelLikeResponse_QNAME, DelLikeResponse.class, null, value);
     }
 
     /**
