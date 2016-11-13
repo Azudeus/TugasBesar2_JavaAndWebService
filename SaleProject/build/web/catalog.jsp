@@ -13,7 +13,6 @@
 <html>
     <body>
         <%@include file="header.jsp" %>   
-
         <%-- set variable --%>
         <%
             List<Product> Products;
@@ -26,12 +25,13 @@
              com.marketplace.MarketPlace port = service.getMarketPlacePort();
              // TODO process result here
              Products = port.getAllProduct();
-
+        
          } catch (Exception ex) {
              throw new RuntimeException("Error condition!!!");
          }
          %>
          <%-- end web service invocation --%>
+
 
         
         <p id = "SubHeader">What are you going to buy today?</p>

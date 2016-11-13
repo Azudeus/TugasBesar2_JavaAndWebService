@@ -361,7 +361,7 @@ public class MarketPlace {
             System.out.println("Connected to the database");
             Statement stmt=conn.createStatement();  
             int rs=stmt.executeUpdate("INSERT INTO purchases(product_id,account_id, consignee ,full_address,postal_code,phone_number,credit_number,credit_veri,quantity,product_name,product_username,product_description,product_price,imgsrc)  VALUES ("+ productId + ","+ accountId + ",'" + consignee +  "', '" + full_address +"','"+ postal_code +"','" + phone_number + "','"+ credit_number +"',"+ credit_veri +","+quantity +",'"+ product_name +"','"+ product_username +"','" + product_description+ "',"+product_price+",'"+ imgsrc+"'); ");
-            rs=stmt.executeUpdate("UPDATE product SET purchase = purchase + 1 WHERE product_id =" + productId +";");
+            //rs=stmt.executeUpdate("UPDATE product SET purchase = purchase + 1 WHERE product_id =" + productId +";");
            // System.out.println("INSERT INTO purchases(product_id,account_id, consignee ,full_address,postal_code,phone_number,credit_number,credit_veri,quantity,product_name,product_username,product_description,product_price,imgsrc) VALUES ("+ productId + ","+ accountId + ",'" + consignee +   "', '" + full_address +"','"+ postal_code +"','" + phone_number + "','"+ credit_number +"',"+ credit_veri +","+quantity +",'"+ product_name +"','"+ product_username +"','" + product_description+ "',"+product_price+"); ");
             return 1;
             
