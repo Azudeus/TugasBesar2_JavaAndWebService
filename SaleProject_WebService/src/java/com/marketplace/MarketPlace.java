@@ -104,7 +104,7 @@ public class MarketPlace {
          
      }
      
-      public List<product> SearchProductWithProductName(String productname){
+           public List<product> SearchProductWithProductName(String productname){
         Connection conn = null;
         String url = "jdbc:mysql://localhost:3306/";
         String dbName = "SaleProject";
@@ -130,7 +130,7 @@ public class MarketPlace {
                 temp.product_price = rs.getDouble("product_price");
                 temp.likes=rs.getInt("likes");
                 temp.purchase = rs.getInt("purchase");
-                temp.product_datetime = rs.getInt("product_datetime");
+                temp.product_datetime = rs.getInt("product_datetime") *1000;
                 temp.imgsrc = rs.getString("imgsrc");
                 allProduct.add(temp);      
               } 
@@ -144,6 +144,87 @@ public class MarketPlace {
             return null;
          
      }
+     
+     public product SearchProductWithProductId(int productId){
+        Connection conn = null;
+        String url = "jdbc:mysql://localhost:3306/";
+        String dbName = "SaleProject";
+        String driver = "com.mysql.jdbc.Driver";
+        String userName = "root";
+        String password = "";
+ 
+        
+            try {
+              Class.forName(driver).newInstance();
+              conn = DriverManager.getConnection(url+dbName,userName,password);
+              System.out.println("Connected to the database");
+              Statement stmt=conn.createStatement();  
+              ResultSet rs=stmt.executeQuery("select * from product where product_id =" + productId  +";");
+          
+              while(rs.next()){
+                product temp = new product();
+                temp.product_id =rs.getInt("product_id");
+                 System.out.println(temp.product_id);
+                temp.product_name = rs.getString("product_name");
+                temp.username = rs.getString("username");
+                temp.product_description = rs.getString("product_description");
+                temp.product_price = rs.getDouble("product_price");
+                temp.likes=rs.getInt("likes");
+                temp.purchase = rs.getInt("purchase");
+                temp.product_datetime = rs.getInt("product_datetime") *1000;
+                temp.imgsrc = rs.getString("imgsrc");
+                return temp;
+              } 
+              conn.close();
+            
+            } catch (Exception e) {
+                System.out.println(e);
+                
+                
+            }
+            return null;
+         
+     }
+      
+    public account GetAccWithAccountId(int accountId){
+        Connection conn = null;
+        String url = "jdbc:mysql://localhost:3306/";
+        String dbName = "SaleProject";
+        String driver = "com.mysql.jdbc.Driver";
+        String userName = "root";
+        String password = "";
+ 
+        
+            try {
+              Class.forName(driver).newInstance();
+              conn = DriverManager.getConnection(url+dbName,userName,password);
+              System.out.println("Connected to the database");
+              Statement stmt=conn.createStatement();  
+              ResultSet rs=stmt.executeQuery("select * from account where account_id =" + accountId  +";");
+          
+              while(rs.next()){
+                account temp = new account();
+                temp.account_id =rs.getInt("account_id");
+                temp.username = rs.getString("username");
+                temp.email = rs.getString("email");
+                temp.password = rs.getString("password");
+                temp.name = rs.getString("name");
+                temp.address = rs.getString("address");
+                temp.postal=rs.getInt("postal");
+                temp.number=rs.getInt("number");
+                return temp;
+              } 
+              conn.close();
+            
+            } catch (Exception e) {
+                System.out.println(e);
+                
+                
+            }
+            return null;
+         
+     }
+     
 
     /**
      * Web service operation

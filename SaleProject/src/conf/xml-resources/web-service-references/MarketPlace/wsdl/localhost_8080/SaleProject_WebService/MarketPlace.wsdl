@@ -10,6 +10,12 @@
 <message name="SearchProductWithProductNameResponse">
 <part name="parameters" element="tns:SearchProductWithProductNameResponse"/>
 </message>
+<message name="GetAccWithAccountId">
+<part name="parameters" element="tns:GetAccWithAccountId"/>
+</message>
+<message name="GetAccWithAccountIdResponse">
+<part name="parameters" element="tns:GetAccWithAccountIdResponse"/>
+</message>
 <message name="DelLike">
 <part name="parameters" element="tns:DelLike"/>
 </message>
@@ -28,6 +34,12 @@
 <message name="GetAllProductResponse">
 <part name="parameters" element="tns:GetAllProductResponse"/>
 </message>
+<message name="SearchProductWithProductId">
+<part name="parameters" element="tns:SearchProductWithProductId"/>
+</message>
+<message name="SearchProductWithProductIdResponse">
+<part name="parameters" element="tns:SearchProductWithProductIdResponse"/>
+</message>
 <message name="SearchProductWithAccount">
 <part name="parameters" element="tns:SearchProductWithAccount"/>
 </message>
@@ -45,6 +57,10 @@
 <input wsam:Action="http://marketplace.com/MarketPlace/SearchProductWithProductNameRequest" message="tns:SearchProductWithProductName"/>
 <output wsam:Action="http://marketplace.com/MarketPlace/SearchProductWithProductNameResponse" message="tns:SearchProductWithProductNameResponse"/>
 </operation>
+<operation name="GetAccWithAccountId">
+<input wsam:Action="http://marketplace.com/MarketPlace/GetAccWithAccountIdRequest" message="tns:GetAccWithAccountId"/>
+<output wsam:Action="http://marketplace.com/MarketPlace/GetAccWithAccountIdResponse" message="tns:GetAccWithAccountIdResponse"/>
+</operation>
 <operation name="DelLike">
 <input wsam:Action="http://marketplace.com/MarketPlace/DelLikeRequest" message="tns:DelLike"/>
 <output wsam:Action="http://marketplace.com/MarketPlace/DelLikeResponse" message="tns:DelLikeResponse"/>
@@ -56,6 +72,10 @@
 <operation name="GetAllProduct">
 <input wsam:Action="http://marketplace.com/MarketPlace/GetAllProductRequest" message="tns:GetAllProduct"/>
 <output wsam:Action="http://marketplace.com/MarketPlace/GetAllProductResponse" message="tns:GetAllProductResponse"/>
+</operation>
+<operation name="SearchProductWithProductId">
+<input wsam:Action="http://marketplace.com/MarketPlace/SearchProductWithProductIdRequest" message="tns:SearchProductWithProductId"/>
+<output wsam:Action="http://marketplace.com/MarketPlace/SearchProductWithProductIdResponse" message="tns:SearchProductWithProductIdResponse"/>
 </operation>
 <operation name="SearchProductWithAccount">
 <input wsam:Action="http://marketplace.com/MarketPlace/SearchProductWithAccountRequest" message="tns:SearchProductWithAccount"/>
@@ -77,6 +97,15 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="GetAccWithAccountId">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="DelLike">
 <soap:operation soapAction=""/>
 <input>
@@ -96,6 +125,15 @@
 </output>
 </operation>
 <operation name="GetAllProduct">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="SearchProductWithProductId">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
