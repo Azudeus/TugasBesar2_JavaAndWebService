@@ -16,6 +16,12 @@
 <message name="GetAccWithAccountIdResponse">
 <part name="parameters" element="tns:GetAccWithAccountIdResponse"/>
 </message>
+<message name="GetPurchase">
+<part name="parameters" element="tns:GetPurchase"/>
+</message>
+<message name="GetPurchaseResponse">
+<part name="parameters" element="tns:GetPurchaseResponse"/>
+</message>
 <message name="DelLike">
 <part name="parameters" element="tns:DelLike"/>
 </message>
@@ -67,6 +73,10 @@
 <input wsam:Action="http://marketplace.com/MarketPlace/GetAccWithAccountIdRequest" message="tns:GetAccWithAccountId"/>
 <output wsam:Action="http://marketplace.com/MarketPlace/GetAccWithAccountIdResponse" message="tns:GetAccWithAccountIdResponse"/>
 </operation>
+<operation name="GetPurchase">
+<input wsam:Action="http://marketplace.com/MarketPlace/GetPurchaseRequest" message="tns:GetPurchase"/>
+<output wsam:Action="http://marketplace.com/MarketPlace/GetPurchaseResponse" message="tns:GetPurchaseResponse"/>
+</operation>
 <operation name="DelLike">
 <input wsam:Action="http://marketplace.com/MarketPlace/DelLikeRequest" message="tns:DelLike"/>
 <output wsam:Action="http://marketplace.com/MarketPlace/DelLikeResponse" message="tns:DelLikeResponse"/>
@@ -108,6 +118,15 @@
 </output>
 </operation>
 <operation name="GetAccWithAccountId">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="GetPurchase">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

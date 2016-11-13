@@ -68,8 +68,20 @@ public class RegisterServlet extends HttpServlet {
             if (!check.next()) {
                 int i =ps.executeUpdate();
                 if (i>0) {
-                    RequestDispatcher rs = request.getRequestDispatcher("Welcome");
-                    rs.forward(request,response);
+                    
+                    PreparedStatement newrec =con.prepareStatement
+                         ("select * from account where email=? and password=?");
+                    newrec.setString(1, email);
+                    newrec.setString(2, password);
+
+                    ResultSet res =newrec.executeQuery();
+                    if (res.next()){
+                        out.println(res.getInt("account_id"));
+                    }
+                    
+                    
+                    
+                    
                 } else {
                     out.println("Error Registration");
                     RequestDispatcher rs = request.getRequestDispatcher("");

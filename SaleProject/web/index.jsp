@@ -7,5 +7,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<% response.sendRedirect("catalog.jsp"); %>
+<% response.sendRedirect("login.jsp"); %>
 </html>

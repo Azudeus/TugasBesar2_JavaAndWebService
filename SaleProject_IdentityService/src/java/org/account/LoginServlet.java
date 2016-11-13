@@ -37,15 +37,12 @@ public class LoginServlet extends HttpServlet {
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
+
         if(Login.checkUser(email,password)) {
-            RequestDispatcher rs = request.getRequestDispatcher("Welcome");
-            rs.forward(request,response);
+            out.println(Login.findUserId(email,password));
         }else {
-            out.println("Incorect email and password");
-            RequestDispatcher rs = request.getRequestDispatcher("");
-            rs.include(request,response);
-        }
+            out.println("Login failed");
+         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

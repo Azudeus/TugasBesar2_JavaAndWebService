@@ -375,5 +375,54 @@ public class MarketPlace {
         }
         
     }
+    
+    public List<purchases> GetPurchase(int account_id) {
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
+        List<purchases> allPurchase = new ArrayList<purchases>();
+        
+            try {
+              Class.forName(driver).newInstance();
+              conn = DriverManager.getConnection(url+dbName,userName,password);
+              System.out.println("Connected to the database");
+              Statement stmt=conn.createStatement();  
+              ResultSet rs=stmt.executeQuery("select * from purchases where account_id = " + account_id + ";");
+          
+              while(rs.next()){
+                purchases temp = new purchases();
+                temp.purchase_id =rs.getInt("purchase_id");
+                temp.product_id =rs.getInt("product_id");
+                temp.account_id =rs.getInt("account_id");
+                temp.consignee = rs.getString("consignee");
+                temp.full_address = rs.getString("full_address");
+                temp.postal_code = rs.getString("postal_code");
+                temp.phone_number =rs.getString("phone_number");
+                temp.credit_number = rs.getString("credit_number");
+                temp.credit_veri = rs.getInt("credit_veri");
+                temp.quantity = rs.getInt("quantity");
+                temp.product_name = rs.getString("product_name");
+                temp.product_description = rs.getString("product_description");
+                temp.product_price =rs.getInt("product_price");
+                temp.username = rs.getString("product_username");
+                temp.purchase_datetime = rs.getString("purchase_datetime");
+                temp.imgsrc = rs.getString("imgsrc");
+             
+                System.out.println(temp.product_price);
+                allPurchase.add(temp);      
+              } 
+              conn.close();
+              return allPurchase;
+            } catch (Exception e) {
+                System.out.println(e);
+                
+                
+            }
+            return null;
+    }
+    
 
 }

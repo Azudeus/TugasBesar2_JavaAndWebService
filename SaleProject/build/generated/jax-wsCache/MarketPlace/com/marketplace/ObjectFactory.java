@@ -36,6 +36,8 @@ public class ObjectFactory {
     private final static QName _GetAccWithAccountIdResponse_QNAME = new QName("http://marketplace.com/", "GetAccWithAccountIdResponse");
     private final static QName _GetAllProduct_QNAME = new QName("http://marketplace.com/", "GetAllProduct");
     private final static QName _GetAllProductResponse_QNAME = new QName("http://marketplace.com/", "GetAllProductResponse");
+    private final static QName _GetPurchase_QNAME = new QName("http://marketplace.com/", "GetPurchase");
+    private final static QName _GetPurchaseResponse_QNAME = new QName("http://marketplace.com/", "GetPurchaseResponse");
     private final static QName _SearchProductWithAccount_QNAME = new QName("http://marketplace.com/", "SearchProductWithAccount");
     private final static QName _SearchProductWithAccountResponse_QNAME = new QName("http://marketplace.com/", "SearchProductWithAccountResponse");
     private final static QName _SearchProductWithProductId_QNAME = new QName("http://marketplace.com/", "SearchProductWithProductId");
@@ -147,6 +149,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetPurchase }
+     * 
+     */
+    public GetPurchase createGetPurchase() {
+        return new GetPurchase();
+    }
+
+    /**
+     * Create an instance of {@link GetPurchaseResponse }
+     * 
+     */
+    public GetPurchaseResponse createGetPurchaseResponse() {
+        return new GetPurchaseResponse();
+    }
+
+    /**
      * Create an instance of {@link SearchProductWithAccount }
      * 
      */
@@ -200,6 +218,14 @@ public class ObjectFactory {
      */
     public Product createProduct() {
         return new Product();
+    }
+
+    /**
+     * Create an instance of {@link Purchases }
+     * 
+     */
+    public Purchases createPurchases() {
+        return new Purchases();
     }
 
     /**
@@ -316,6 +342,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://marketplace.com/", name = "GetAllProductResponse")
     public JAXBElement<GetAllProductResponse> createGetAllProductResponse(GetAllProductResponse value) {
         return new JAXBElement<GetAllProductResponse>(_GetAllProductResponse_QNAME, GetAllProductResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetPurchase }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "GetPurchase")
+    public JAXBElement<GetPurchase> createGetPurchase(GetPurchase value) {
+        return new JAXBElement<GetPurchase>(_GetPurchase_QNAME, GetPurchase.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetPurchaseResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://marketplace.com/", name = "GetPurchaseResponse")
+    public JAXBElement<GetPurchaseResponse> createGetPurchaseResponse(GetPurchaseResponse value) {
+        return new JAXBElement<GetPurchaseResponse>(_GetPurchaseResponse_QNAME, GetPurchaseResponse.class, null, value);
     }
 
     /**

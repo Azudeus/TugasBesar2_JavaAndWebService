@@ -28,8 +28,8 @@
     </target>
     <target name="wsimport-client-MarketPlace" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/MarketPlace"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/MarketPlace" destdir="${build.generated.dir}/jax-wsCache/MarketPlace" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/MarketPlace/wsdl/localhost_8080/SaleProject_WebService/MarketPlace.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/SaleProject_WebService/MarketPlace?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/MarketPlace/wsdl/localhost_8080/SaleProject_WebService/MarketPlace.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/MarketPlace" destdir="${build.generated.dir}/jax-wsCache/MarketPlace" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/MarketPlace/wsdl/localhost_8081/SaleProject_WebService/MarketPlace.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8081/SaleProject_WebService/MarketPlace?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/MarketPlace/wsdl/localhost_8081/SaleProject_WebService/MarketPlace.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/MarketPlace"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">

@@ -27,51 +27,15 @@ public interface MarketPlace {
 
     /**
      * 
-     * @param arg0
      * @return
      *     returns java.util.List<com.marketplace.Product>
      */
-    @WebMethod(operationName = "SearchProductWithProductName")
+    @WebMethod(operationName = "GetAllProduct")
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "SearchProductWithProductName", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductName")
-    @ResponseWrapper(localName = "SearchProductWithProductNameResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductNameResponse")
-    @Action(input = "http://marketplace.com/MarketPlace/SearchProductWithProductNameRequest", output = "http://marketplace.com/MarketPlace/SearchProductWithProductNameResponse")
-    public List<Product> searchProductWithProductName(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns com.marketplace.Account
-     */
-    @WebMethod(operationName = "GetAccWithAccountId")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "GetAccWithAccountId", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAccWithAccountId")
-    @ResponseWrapper(localName = "GetAccWithAccountIdResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAccWithAccountIdResponse")
-    @Action(input = "http://marketplace.com/MarketPlace/GetAccWithAccountIdRequest", output = "http://marketplace.com/MarketPlace/GetAccWithAccountIdResponse")
-    public Account getAccWithAccountId(
-        @WebParam(name = "arg0", targetNamespace = "")
-        int arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns int
-     */
-    @WebMethod(operationName = "DelLike")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "DelLike", targetNamespace = "http://marketplace.com/", className = "com.marketplace.DelLike")
-    @ResponseWrapper(localName = "DelLikeResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.DelLikeResponse")
-    @Action(input = "http://marketplace.com/MarketPlace/DelLikeRequest", output = "http://marketplace.com/MarketPlace/DelLikeResponse")
-    public int delLike(
-        @WebParam(name = "arg0", targetNamespace = "")
-        int arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        int arg1);
+    @RequestWrapper(localName = "GetAllProduct", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAllProduct")
+    @ResponseWrapper(localName = "GetAllProductResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAllProductResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/GetAllProductRequest", output = "http://marketplace.com/MarketPlace/GetAllProductResponse")
+    public List<Product> getAllProduct();
 
     /**
      * 
@@ -93,48 +57,6 @@ public interface MarketPlace {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<com.marketplace.Product>
-     */
-    @WebMethod(operationName = "GetAllProduct")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "GetAllProduct", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAllProduct")
-    @ResponseWrapper(localName = "GetAllProductResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAllProductResponse")
-    @Action(input = "http://marketplace.com/MarketPlace/GetAllProductRequest", output = "http://marketplace.com/MarketPlace/GetAllProductResponse")
-    public List<Product> getAllProduct();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns com.marketplace.Product
-     */
-    @WebMethod(operationName = "SearchProductWithProductId")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "SearchProductWithProductId", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductId")
-    @ResponseWrapper(localName = "SearchProductWithProductIdResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductIdResponse")
-    @Action(input = "http://marketplace.com/MarketPlace/SearchProductWithProductIdRequest", output = "http://marketplace.com/MarketPlace/SearchProductWithProductIdResponse")
-    public Product searchProductWithProductId(
-        @WebParam(name = "arg0", targetNamespace = "")
-        int arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.util.List<com.marketplace.Product>
-     */
-    @WebMethod(operationName = "SearchProductWithAccount")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "SearchProductWithAccount", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithAccount")
-    @ResponseWrapper(localName = "SearchProductWithAccountResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithAccountResponse")
-    @Action(input = "http://marketplace.com/MarketPlace/SearchProductWithAccountRequest", output = "http://marketplace.com/MarketPlace/SearchProductWithAccountResponse")
-    public List<Product> searchProductWithAccount(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
      * @param arg1
      * @param arg0
      * @return
@@ -146,6 +68,24 @@ public interface MarketPlace {
     @ResponseWrapper(localName = "AddLikeResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.AddLikeResponse")
     @Action(input = "http://marketplace.com/MarketPlace/AddLikeRequest", output = "http://marketplace.com/MarketPlace/AddLikeResponse")
     public int addLike(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        int arg1);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns int
+     */
+    @WebMethod(operationName = "DelLike")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "DelLike", targetNamespace = "http://marketplace.com/", className = "com.marketplace.DelLike")
+    @ResponseWrapper(localName = "DelLikeResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.DelLikeResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/DelLikeRequest", output = "http://marketplace.com/MarketPlace/DelLikeResponse")
+    public int delLike(
         @WebParam(name = "arg0", targetNamespace = "")
         int arg0,
         @WebParam(name = "arg1", targetNamespace = "")
@@ -204,5 +144,80 @@ public interface MarketPlace {
         String arg12,
         @WebParam(name = "arg13", targetNamespace = "")
         String arg13);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<com.marketplace.Purchases>
+     */
+    @WebMethod(operationName = "GetPurchase")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "GetPurchase", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetPurchase")
+    @ResponseWrapper(localName = "GetPurchaseResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetPurchaseResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/GetPurchaseRequest", output = "http://marketplace.com/MarketPlace/GetPurchaseResponse")
+    public List<Purchases> getPurchase(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<com.marketplace.Product>
+     */
+    @WebMethod(operationName = "SearchProductWithAccount")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "SearchProductWithAccount", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithAccount")
+    @ResponseWrapper(localName = "SearchProductWithAccountResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithAccountResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/SearchProductWithAccountRequest", output = "http://marketplace.com/MarketPlace/SearchProductWithAccountResponse")
+    public List<Product> searchProductWithAccount(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<com.marketplace.Product>
+     */
+    @WebMethod(operationName = "SearchProductWithProductName")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "SearchProductWithProductName", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductName")
+    @ResponseWrapper(localName = "SearchProductWithProductNameResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductNameResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/SearchProductWithProductNameRequest", output = "http://marketplace.com/MarketPlace/SearchProductWithProductNameResponse")
+    public List<Product> searchProductWithProductName(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.marketplace.Product
+     */
+    @WebMethod(operationName = "SearchProductWithProductId")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "SearchProductWithProductId", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductId")
+    @ResponseWrapper(localName = "SearchProductWithProductIdResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.SearchProductWithProductIdResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/SearchProductWithProductIdRequest", output = "http://marketplace.com/MarketPlace/SearchProductWithProductIdResponse")
+    public Product searchProductWithProductId(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.marketplace.Account
+     */
+    @WebMethod(operationName = "GetAccWithAccountId")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "GetAccWithAccountId", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAccWithAccountId")
+    @ResponseWrapper(localName = "GetAccWithAccountIdResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetAccWithAccountIdResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/GetAccWithAccountIdRequest", output = "http://marketplace.com/MarketPlace/GetAccWithAccountIdResponse")
+    public Account getAccWithAccountId(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
 
 }
