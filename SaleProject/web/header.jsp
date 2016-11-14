@@ -4,6 +4,10 @@
     Author     : user
 --%>
  <%@page import="com.marketplace.Account"%>
+ <% 
+            String token = (String) session.getAttribute("token");
+ %>
+
 <%
             Account cur = null;
             int asd = Integer.parseInt(((String)session.getAttribute("account_id")).trim());
@@ -25,6 +29,7 @@
     <h1 id = "title"><span id="sale">Sale</span><span id="project">Project</span></h1>
 
     <h2 id = "hellouser">Hi, <%out.println(cur.getUsername()); %> !</h2>
+    <h2 id = "hellouser"><font size = 1>Your access token <%out.println(token); %> </font></h2>
     <h2 id = "logout"><a href = "login.php" class = "redlink">logout</a></h3><br>  
     <table width = "100%" id = 'catalog'>
         <tr>
@@ -44,4 +49,5 @@
             </td>
         </tr>
     </table>
+
 </html>
