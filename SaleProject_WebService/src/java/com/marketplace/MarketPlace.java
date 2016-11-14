@@ -107,7 +107,7 @@ public class MarketPlace {
               conn = DriverManager.getConnection(url+dbName,userName,password);
               System.out.println("Connected to the database");
               Statement stmt=conn.createStatement();  
-              ResultSet rs=stmt.executeQuery("select * from product where username like '%" + username + "%';");
+              ResultSet rs=stmt.executeQuery("select * from product where username like '" + username + "';");
           
               while(rs.next()){
                 product temp = new product();
@@ -363,7 +363,7 @@ public class MarketPlace {
             System.out.println("Connected to the database");
             Statement stmt=conn.createStatement();  
             int rs=stmt.executeUpdate("INSERT INTO purchases(product_id,account_id, consignee ,full_address,postal_code,phone_number,credit_number,credit_veri,quantity,product_name,product_username,product_description,product_price,imgsrc)  VALUES ("+ productId + ","+ accountId + ",'" + consignee +  "', '" + full_address +"','"+ postal_code +"','" + phone_number + "','"+ credit_number +"',"+ credit_veri +","+quantity +",'"+ product_name +"','"+ product_username +"','" + product_description+ "',"+product_price+",'"+ imgsrc+"'); ");
-            //rs=stmt.executeUpdate("UPDATE product SET purchase = purchase + 1 WHERE product_id =" + productId +";");
+            rs=stmt.executeUpdate("UPDATE product SET purchase = purchase + 1 WHERE product_id =" + productId +";");
            // System.out.println("INSERT INTO purchases(product_id,account_id, consignee ,full_address,postal_code,phone_number,credit_number,credit_veri,quantity,product_name,product_username,product_description,product_price,imgsrc) VALUES ("+ productId + ","+ accountId + ",'" + consignee +   "', '" + full_address +"','"+ postal_code +"','" + phone_number + "','"+ credit_number +"',"+ credit_veri +","+quantity +",'"+ product_name +"','"+ product_username +"','" + product_description+ "',"+product_price+"); ");
             return 1;
             
@@ -424,5 +424,144 @@ public class MarketPlace {
             return null;
     }
     
+    public List<purchases> GetPurchaseByName (String username) {
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
+        List<purchases> allPurchase = new ArrayList<purchases>();
+        
+            try {
+              Class.forName(driver).newInstance();
+              conn = DriverManager.getConnection(url+dbName,userName,password);
+              System.out.println("Connected to the database");
+              Statement stmt=conn.createStatement();  
+              ResultSet rs=stmt.executeQuery("select * from purchases where product_username like '%"+ username +"%';");
+          
+              while(rs.next()){
+                purchases temp = new purchases();
+                temp.purchase_id =rs.getInt("purchase_id");
+                temp.product_id =rs.getInt("product_id");
+                temp.account_id =rs.getInt("account_id");
+                temp.consignee = rs.getString("consignee");
+                temp.full_address = rs.getString("full_address");
+                temp.postal_code = rs.getString("postal_code");
+                temp.phone_number =rs.getString("phone_number");
+                temp.credit_number = rs.getString("credit_number");
+                temp.credit_veri = rs.getInt("credit_veri");
+                temp.quantity = rs.getInt("quantity");
+                temp.product_name = rs.getString("product_name");
+                temp.product_description = rs.getString("product_description");
+                temp.product_price =rs.getInt("product_price");
+                temp.username = rs.getString("product_username");
+                temp.purchase_datetime = rs.getString("purchase_datetime");
+                temp.imgsrc = rs.getString("imgsrc");
+             
+                allPurchase.add(temp);      
+              } 
+              conn.close();
+              return allPurchase;
+            } catch (Exception e) {
+                System.out.println(e);
+                
+                
+            }
+            return null;
+    }
+    
+    
+     public int AddProduct(String product_name ,String username, String product_description, String product_price, String imgsrc) {
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
+              
+         try {
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url+dbName,userName,password);
+            System.out.println("Connected to the database");
+            Statement stmt=conn.createStatement();  
+            int rs=stmt.executeUpdate("insert into product (product_name,username,product_description,product_price,likes,purchase,imgsrc)" +
+"values ('"+product_name+"','"+ username + "','"+ product_description +"',"+product_price+",0,0,'" +imgsrc +"');");
+           // System.out.println("INSERT INTO purchases(product_id,account_id, consignee ,full_address,postal_code,phone_number,credit_number,credit_veri,quantity,product_name,product_username,product_description,product_price,imgsrc) VALUES ("+ productId + ","+ accountId + ",'" + consignee +   "', '" + full_address +"','"+ postal_code +"','" + phone_number + "','"+ credit_number +"',"+ credit_veri +","+quantity +",'"+ product_name +"','"+ product_username +"','" + product_description+ "',"+product_price+"); ");
+            return 1;
+            
+
+        } catch (Exception e){
+            System.out.println(e);
+            return 0;
+            
+        }
+        
+    }
+     
+     public int DelProduct (String product_id){
+            conn = null;
+            url = "jdbc:mysql://localhost:3306/";
+            dbName = "SaleProject";
+            driver = "com.mysql.jdbc.Driver";
+            userName = "root";
+            password = "";
+            
+            try {
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url+dbName,userName,password);
+            System.out.println("Connected to the database");
+            Statement stmt=conn.createStatement();  
+            int rs=stmt.executeUpdate("delete from product where product_id = " + product_id +";" );
+           // System.out.println("INSERT INTO purchases(product_id,account_id, consignee ,full_address,postal_code,phone_number,credit_number,credit_veri,quantity,product_name,product_username,product_description,product_price,imgsrc) VALUES ("+ productId + ","+ accountId + ",'" + consignee +   "', '" + full_address +"','"+ postal_code +"','" + phone_number + "','"+ credit_number +"',"+ credit_veri +","+quantity +",'"+ product_name +"','"+ product_username +"','" + product_description+ "',"+product_price+"); ");
+            return 1;
+            
+
+        } catch (Exception e){
+            System.out.println(e);
+            return 0;
+            
+        }
+            
+            
+
+              
+        
+        
+        
+        
+        }
+
+        public int EditProduct(String product_id, String product_name , String product_description, String product_price, String imgsrc) {
+        conn = null;
+        url = "jdbc:mysql://localhost:3306/";
+        dbName = "SaleProject";
+        driver = "com.mysql.jdbc.Driver";
+        userName = "root";
+        password = "";
+              
+         try {
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url+dbName,userName,password);
+            System.out.println("Connected to the database");
+            Statement stmt=conn.createStatement();
+            
+            
+//            int rs=stmt.executeUpdate("UPDATE product SET likes = likes + 1 WHERE product_id =" + productId +";");
+            
+
+            int rs=stmt.executeUpdate("UPDATE product SET product_name = '"+ product_name + "' where product_id = " + product_id + ";");
+            rs=stmt.executeUpdate("UPDATE product SET product_description = '"+ product_description + "' where product_id = " + product_id + ";");
+            rs=stmt.executeUpdate("UPDATE product SET product_price = '"+ product_price + "' where product_id = " + product_id + ";");
+           return 1;
+            
+
+        } catch (Exception e){
+            System.out.println(e);
+            return 0;
+            
+        }
+        
+    }
 
 }

@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         if(Login.checkUser(email,password)) {
-            out.println(Login.findUserId(email,password));
+            out.print(Login.findUserId(email,password));
         }else {
             out.println("Login failed");
          }

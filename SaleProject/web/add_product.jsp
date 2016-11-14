@@ -14,11 +14,14 @@
 </head>
 <body>
     <%@include file="header.jsp" %>
+         <%
+            
+            int account_id = Integer.parseInt(((String)session.getAttribute("account_id")).trim());
+        %>
+
     <p id = "SubHeader">Please add your product here.
     <hr>
-    <form action="//" method="post" name ="myProductForm" onsubmit="return myProductValidate(myProductForm)" 
-          action="<//>" method="POST"
-          enctype="multipart/form-data">
+    <form action="add_product_action.jsp" method="post" name ="myProductForm" onsubmit="return myProductValidate(myProductForm)" >
             <span id = "fName"> Name </span><br>
             <input type ="text" name ="name" class = "width100"><br><br>
             <span id = "fDesc"> Description (max 200 chars) </span><br>
@@ -27,8 +30,7 @@
             <input type ="text" name ="price" class = "width100" ><br><br>
             <span id = "pphoto"> Photo </span> <br>
             <input type ="file" name = "photochoose">
-                    <input type="hidden" name = "account_username" value="<?php echo $account_username?>"</p>
-            <input type="hidden" name = "account_id" value="<?php echo $account_id?>"</p>
+            <input type="hidden" name = "account_id" value="<%out.println(account_id);%>">
                     <div class ="right">
             <input type = "submit" id = "addbutton" class ="button" value ="ADD"> 
             <input type = "button" id = "cancelbutton" class ="button" value ="CANCEL" 

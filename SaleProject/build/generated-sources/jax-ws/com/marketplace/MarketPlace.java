@@ -27,6 +27,33 @@ public interface MarketPlace {
 
     /**
      * 
+     * @param arg3
+     * @param arg2
+     * @param arg4
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns int
+     */
+    @WebMethod(operationName = "EditProduct")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "EditProduct", targetNamespace = "http://marketplace.com/", className = "com.marketplace.EditProduct")
+    @ResponseWrapper(localName = "EditProductResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.EditProductResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/EditProductRequest", output = "http://marketplace.com/MarketPlace/EditProductResponse")
+    public int editProduct(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3,
+        @WebParam(name = "arg4", targetNamespace = "")
+        String arg4);
+
+    /**
+     * 
      * @return
      *     returns java.util.List<com.marketplace.Product>
      */
@@ -164,6 +191,36 @@ public interface MarketPlace {
      * 
      * @param arg0
      * @return
+     *     returns int
+     */
+    @WebMethod(operationName = "DelProduct")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "DelProduct", targetNamespace = "http://marketplace.com/", className = "com.marketplace.DelProduct")
+    @ResponseWrapper(localName = "DelProductResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.DelProductResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/DelProductRequest", output = "http://marketplace.com/MarketPlace/DelProductResponse")
+    public int delProduct(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<com.marketplace.Purchases>
+     */
+    @WebMethod(operationName = "GetPurchaseByName")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "GetPurchaseByName", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetPurchaseByName")
+    @ResponseWrapper(localName = "GetPurchaseByNameResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.GetPurchaseByNameResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/GetPurchaseByNameRequest", output = "http://marketplace.com/MarketPlace/GetPurchaseByNameResponse")
+    public List<Purchases> getPurchaseByName(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
      *     returns java.util.List<com.marketplace.Product>
      */
     @WebMethod(operationName = "SearchProductWithAccount")
@@ -219,5 +276,32 @@ public interface MarketPlace {
     public Account getAccWithAccountId(
         @WebParam(name = "arg0", targetNamespace = "")
         int arg0);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg4
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns int
+     */
+    @WebMethod(operationName = "AddProduct")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "AddProduct", targetNamespace = "http://marketplace.com/", className = "com.marketplace.AddProduct")
+    @ResponseWrapper(localName = "AddProductResponse", targetNamespace = "http://marketplace.com/", className = "com.marketplace.AddProductResponse")
+    @Action(input = "http://marketplace.com/MarketPlace/AddProductRequest", output = "http://marketplace.com/MarketPlace/AddProductResponse")
+    public int addProduct(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3,
+        @WebParam(name = "arg4", targetNamespace = "")
+        String arg4);
 
 }

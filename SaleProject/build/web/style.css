@@ -147,6 +147,11 @@ color: black;}
 	color : red;
 }
 
+
+.yellowlink{
+	color : yellow;
+}
+
 #catalog td.blue{
 	background : #4169E1;
 }

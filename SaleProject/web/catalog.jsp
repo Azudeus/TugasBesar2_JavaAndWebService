@@ -16,7 +16,7 @@
         <%-- set variable --%>
         <%
             List<Product> Products;
-            int account_id = 1;
+            int account_id = Integer.parseInt(((String)session.getAttribute("account_id")).trim());
         %>
          <%-- start web service invocation --%>
          <%
