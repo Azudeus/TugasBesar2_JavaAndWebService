@@ -15,21 +15,22 @@ Diharapkan dengan tugas ini anda dapat mengerti:
 ### Petunjuk Pengerjaan
 ## Anggota Tim
 
-Setiap kelompok beranggotakan **3 - 4 orang**. Daftar anggota kelompok terdapat pada link berikut: https://drive.google.com/open?id=1wpzU2VHZXvSVNR6TS4sxILVvHimQYhxQhorMr1nSelw
+Davin Prasetya -- 13514003
+Yeksadiningrat Al Valentino -- 13514055
+Muhammad Reifiza -- 13514103
 
 ## Petunjuk Pengerjaan
-
 1. Fork pada repository ini dengan organisasi yang telah dibuat pada Tugas Besar 1.
-2. Ubah hak akses repository hasil Fork anda menjadi **private**.
-3. [DELIVERABLE] Buat tugas sesuai spesifikasi dan silakan commit pada repository anda (hasil fork). Lakukan berberapa commit dengan pesan yang bermakna, contoh: `fix css`, `create post done`, jangan seperti `final`, `benerin dikit`. Disarankan untuk tidak melakukan commit dengan perubahan yang besar karena akan mempengaruhi penilaian (contoh: hanya melakukan satu commit kemudian dikumpulkan). Sebaiknya commit dilakukan setiap ada penambahan fitur. **Commit dari setiap anggota tim akan mempengaruhi penilaian individu.** Jadi, setiap anggota tim harus melakukan sejumlah commit yang berpengaruh terhadap proses pembuatan aplikasi.
-7. Hapus bagian yang tidak perlu dari *readme* ini.
-8. [DELIVERABLE] Berikan penjelasan mengenai hal di bawah ini pada bagian **Penjelasan** dari *readme* repository git Anda:
+2. Ubah hak akses repository hasil Fork anda menjadi private.
+3. [DELIVERABLE] Buat tugas sesuai spesifikasi dan silakan commit pada repository anda (hasil fork). Lakukan berberapa commit dengan pesan yang bermakna, contoh: fix css, create post done, jangan seperti final, benerin dikit. Disarankan untuk tidak melakukan commit dengan perubahan yang besar karena akan mempengaruhi penilaian (contoh: hanya melakukan satu commit kemudian dikumpulkan). Sebaiknya commit dilakukan setiap ada penambahan fitur. Commit dari setiap anggota tim akan mempengaruhi penilaian individu. Jadi, setiap anggota tim harus melakukan sejumlah commit yang berpengaruh terhadap proses pembuatan aplikasi
+4. Hapus bagian yang tidak perlu dari *readme* ini.
+5. [DELIVERABLE] Berikan penjelasan mengenai hal di bawah ini pada bagian **Penjelasan** dari *readme* repository git Anda:
     - Basis data dari sistem yang Anda buat.
     - Konsep *shared session* dengan menggunakan REST.
     - Pembangkitan token dan expire time pada sistem yang anda buat.
     - Kelebihan dan kelemahan dari arsitektur aplikasi tugas ini, dibandingkan dengan aplikasi monolitik (login, CRUD DB, dll jadi dalam satu aplikasi)
-9. Pada *readme* terdapat penjelasan mengenai pembagian tugas masing-masing anggota (lihat formatnya pada bagian **pembagian tugas**).
-10. Merge request dari repository anda ke repository ini dengan format **Nama kelompok** - **NIM terkecil** - **Nama Lengkap dengan NIM terkecil** sebelum **Minggu, 13 November 2016 23.59**.
+6. Pada *readme* terdapat penjelasan mengenai pembagian tugas masing-masing anggota (lihat formatnya pada bagian **pembagian tugas**).
+7. Merge request dari repository anda ke repository ini dengan format **Nama kelompok** - **NIM terkecil** - **Nama Lengkap dengan NIM terkecil** sebelum **Minggu, 13 November 2016 23.59**.
 
 ### Arsitektur Umum Server
 ![Gambar Arsitektur Umum Server](http://gitlab.informatika.org/IF3110_WebBasedDevelopment_2016/TugasBesar2_JavaAndWebService/raw/3747ba2499396d04f742a589a024876964383159/arsitektur_umum.png)
@@ -105,7 +106,11 @@ Anda tidak dituntut untuk mengerjakan ini. Tetapi bila Anda cukup dewa (baca=ter
 Fokus terlebih dahulu menyelesaikan semua spesifikasi yang ada sebelum memikirkan bonus.
 
 ### Penjelasan
-Berikan penjelasan mengenai konsep diatas.
+Pada sistem yang dibuat untuk pengerjaan tugas ini, kami mengambil kembali skema basis data dari sistem untuk pengerjaan tugas sebelumnya. Skema basis data ini kemudian kami bagi menjadi dua skema: skema yang memuat relasi product, relasi likes, dan relasi purchases; skema lainnya memuat khusus relasi account.
+Relasi account memuat data tentang informasi akun (id, nama user, kode sandi, email, nama asli user, alamat, kode pos, dan nomor hp) dan sesuai spesifikasi tugas hanya diakses oleh Identity Service (semua yang ada di dalam berkas SaleProject_IdentityService). Relasi product menyimpan data tentang semua produk yang dijual, relasi likes menyimpan data siapa saja user yang suka dengan product tersebut, relasi purchases menyimpan semua data transaksi pembelian.
+REST shared session: ...
+Pembangkitan token diimplementasikan dengan pembangkitan bilangan acak yang diatur lama timeout-nya. ...
+
 
 ### Pembagian Tugas
 "Gaji buta dilarang dalam tugas ini. Bila tak mengerti, luangkan waktu belajar lebih banyak. Bila belum juga mengerti, belajarlah bersama-sama kelompokmu. Bila Anda sekelompok bingung, bertanyalah (bukan menyontek) ke teman seangkatanmu. Bila seangkatan bingung, bertanyalah pada asisten manapun."
@@ -113,25 +118,33 @@ Berikan penjelasan mengenai konsep diatas.
 *Harap semua anggota kelompok mengerjakan SOAP dan REST API kedua-duanya*. Tuliskan pembagian tugas seperti berikut ini.
 
 REST :
-1. Generate token : 135130XX
-2. Validasi token : 135130XX
-3. Fungsionaltiax X : 135130XX
-4. ...
+1. Generate token : 13513003
+2. Validasi token : 13513003
+3. Login akun : 13514003
+4. Registrasi akun : 13514003
 
 SOAP :
-1. Add Produce : 135130xx
-2. Fungsionalitas Y : 135130xx
-3. ...
+1. Pencarian produk berdasarkan nama / id : 13514055
+2. Listing semua produk dari sebuah akun : 13514055
+3. Daftar semua produk : 13514055
+4. Pencarian akun berdasarkan id : 13514055
+5. Fitur Likes : 13514055
+6. Add Purchase : 13514055
+7. Manajemen Produk (add, edit, delete) : 13514103, 
 
 Web app (JSP) :
-1. Halaman Login : 
-2. Halaman X :
-3. ...
+1. add_product : 13514103, 
+2. catalog : 13514055, 
+3. catalogsearch : 13514055
+4. confirmbuy : 13514055
+5. likes : 13514055
+6. purchases : 13514055
+7. sales : 135140455
 
 ## About
 
-Asisten IF3110 2016
+Kelompok iKan
 
-Adin | Chairuni | David | Natan | Nilta | Tifani | Wawan | William
+Davin | Yeksa | Reifi
 
 Dosen : Yudistira Dwi Wardhana | Riza Satria Perdana
