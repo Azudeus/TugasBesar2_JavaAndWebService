@@ -18,15 +18,14 @@
         <%-- set variable --%>
         <%
             List<Product> Products;
-            int account_id = 1;
-        %>
+            int account_id = Integer.parseInt(((String)session.getAttribute("account_id")).trim());        %>
          <%-- start web service invocation --%>
          <%
             Account dummy; 
             com.marketplace.MarketPlace_Service service = new com.marketplace.MarketPlace_Service();
             com.marketplace.MarketPlace port = service.getMarketPlacePort();
             dummy = port.getAccWithAccountId(account_id);
-            Products = port.searchProductWithAccount(dummy.getUsername());
+            Products = port.searchProductWithAccount(dummy.getUsername().trim());
         %>
          <%-- end web service invocation --%>
 

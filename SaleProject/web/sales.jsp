@@ -21,13 +21,27 @@
     <%
     int account_id = 1;
     List<Purchases> PurchasesList = null;
+
+     
+        com.validator.Validator_Service service2 = new com.validator.Validator_Service();
+	com.validator.Validator port2 = service2.getValidatorPort();
+        int resulta = port2.authToken(token);
+	if(resulta == 2 ){
+            out.println("<script>alert('token sudah kadaluarsa');</script> ");
+            out.println("<form method='post' action='connector.jsp' id='formLogout'>");
+            out.println("<input type='hidden' name='title' value='logout'>");
+            out.println("<input type='hidden' name='access_token' value="+token+">");
+            out.println("</form>");
+            out.println("<script>document.forms['formLogout'].submit();</script>"); 
+        }
        
     try {
         Account dummy; 
         com.marketplace.MarketPlace_Service service = new com.marketplace.MarketPlace_Service();
         com.marketplace.MarketPlace port = service.getMarketPlacePort();
         dummy = port.getAccWithAccountId(account_id);
-	PurchasesList = port.getPurchaseByName(dummy.getUsername());
+   
+	PurchasesList = port.getPurchaseByName(dummy.getUsername().trim());
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
     }
@@ -36,7 +50,7 @@
     <html>
      <p id = "SubHeader">Here are your Sales</p>
         <hr>        
-        
+        <br>
     
             <% 
               for(int i = 0; i < PurchasesList.size(); i++){

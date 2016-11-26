@@ -5,7 +5,8 @@
 --%>
  <%@page import="com.marketplace.Account"%>
  <% 
-            String token = (String) session.getAttribute("token");
+            String token = ((String) session.getAttribute("token")).trim();
+            String username = ((String) session.getAttribute("username")).trim();
  %>
 
 <%
@@ -28,9 +29,15 @@
 <html>
     <h1 id = "title"><span id="sale">Sale</span><span id="project">Project</span></h1>
 
-    <h2 id = "hellouser">Hi, <%out.println(cur.getUsername()); %> !</h2>
+    <h2 id = "hellouser">Hi, <%out.println(username); %> !</h2>
     <h2 id = "hellouser"><font size = 1>Your access token <%out.println(token); %> </font></h2>
-    <h2 id = "logout"><a href = "login.php" class = "redlink">logout</a></h3><br>  
+    
+    <form method="post" action="connector.jsp" id="formLogout">
+    <input type="hidden" name="title" value="logout">
+    <input type="hidden" name="access_token" value=<%=token%>>
+    <h2 id = "logout"><a href="javascript:;" class = "redlink" onclick="document.getElementById('formLogout').submit();">logout</a></h2><br>  
+    </form>
+    
     <table width = "100%" id = 'catalog'>
         <tr>
             <td class = 'nobg'>

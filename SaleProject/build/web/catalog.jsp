@@ -9,6 +9,7 @@
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="style.css">
+<%@include file="request.jsp"%>
 <!DOCTYPE html>
 <html>
     <body>
@@ -18,8 +19,28 @@
             List<Product> Products;
             int account_id = Integer.parseInt(((String)session.getAttribute("account_id")).trim());
         %>
-         <%-- start web service invocation --%>
+        
+        
+        
+        
+        
+        
+        <%-- start web service invocation --%>
          <%
+             
+        com.validator.Validator_Service service2 = new com.validator.Validator_Service();
+	com.validator.Validator port2 = service2.getValidatorPort();
+     
+        int result = port2.authToken(token);
+	if(result == 2 ){
+            out.println("<script>alert('token sudah kadaluarsa');</script> ");
+            out.println("<form method='post' action='connector.jsp' id='formLogout'>");
+            out.println("<input type='hidden' name='title' value='logout'>");
+            out.println("<input type='hidden' name='access_token' value="+token+">");
+            out.println("</form>");
+            out.println("<script>document.forms['formLogout'].submit();</script>"); 
+        }
+        
          try {
              com.marketplace.MarketPlace_Service service = new com.marketplace.MarketPlace_Service();
              com.marketplace.MarketPlace port = service.getMarketPlacePort();
@@ -29,6 +50,7 @@
          } catch (Exception ex) {
              throw new RuntimeException("Error condition!!!");
          }
+     
          %>
          <%-- end web service invocation --%>
 

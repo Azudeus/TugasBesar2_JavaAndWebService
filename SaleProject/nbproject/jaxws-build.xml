@@ -28,8 +28,8 @@
     </target>
     <target name="wsimport-client-MarketPlace" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/MarketPlace"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/MarketPlace" destdir="${build.generated.dir}/jax-wsCache/MarketPlace" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/MarketPlace/wsdl/localhost_8081/SaleProject_WebService/MarketPlace.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8081/SaleProject_WebService/MarketPlace?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/MarketPlace/wsdl/localhost_8081/SaleProject_WebService/MarketPlace.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/MarketPlace" destdir="${build.generated.dir}/jax-wsCache/MarketPlace" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/MarketPlace/wsdl/localhost_8080/SaleProject_WebService/MarketPlace.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/SaleProject_WebService/MarketPlace?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/MarketPlace/wsdl/localhost_8080/SaleProject_WebService/MarketPlace.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/MarketPlace"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -42,5 +42,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/com/marketplace"/>
         <delete dir="${build.generated.dir}/jax-wsCache/MarketPlace"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-MarketPlace"/>
+    <target name="wsimport-client-validator" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/validator"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/validator" destdir="${build.generated.dir}/jax-wsCache/validator" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/validator/wsdl/localhost_8080/SaleProject_WebService/validator.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/SaleProject_WebService/validator?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/validator/wsdl/localhost_8080/SaleProject_WebService/validator.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/validator"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/validator">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-validator" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/validator"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/validator"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-MarketPlace, wsimport-client-validator"/>
 </project>

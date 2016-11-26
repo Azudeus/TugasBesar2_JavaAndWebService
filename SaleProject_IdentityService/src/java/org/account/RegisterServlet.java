@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
 /**
  *
@@ -38,7 +39,8 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
+         JSONObject jsonResponse = new JSONObject();
+         try {
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();  
             String username = request.getParameter("username");
@@ -76,12 +78,13 @@ public class RegisterServlet extends HttpServlet {
 
                     ResultSet res =newrec.executeQuery();
                     if (res.next()){
-                        out.println(res.getInt("account_id"));
+                        int retid = res.getInt("account_id");
+                        jsonResponse.put("id",retid);
+                        jsonResponse.put("username",Login.findUsernamebyId(retid));
+                        out.write(jsonResponse.toString());
+                        out.flush();
                     }
-                    
-                    
-                    
-                    
+     
                 } else {
                     out.println("Error Registration");
                     RequestDispatcher rs = request.getRequestDispatcher("");

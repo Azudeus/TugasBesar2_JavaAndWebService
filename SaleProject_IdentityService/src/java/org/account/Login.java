@@ -55,5 +55,22 @@ public class Login {
         return ret;
     }
     
+    public static String findUsernamebyId(int id) {
+        String ret ="";
+        try {
+            Connection con = DBConnect.connect();
+            PreparedStatement ps = con.prepareStatement
+                    ("select username from account where account_id=?");
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                ret = rs.getString("username");
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
+    }
+    
        
 }

@@ -59,8 +59,9 @@ public class MarketPlace {
         userName = "root";
         password = "";
         List<product> allProduct = new ArrayList<product>();
-        
-            try {
+       
+
+                 try {
               Class.forName(driver).newInstance();
               conn = DriverManager.getConnection(url+dbName,userName,password);
               System.out.println("Connected to the database");
@@ -86,9 +87,7 @@ public class MarketPlace {
               conn.close();
               return allProduct;
             } catch (Exception e) {
-                System.out.println(e);
-                
-                
+                System.out.println(e);                
             }
             return null;
     }
@@ -301,8 +300,8 @@ public class MarketPlace {
         driver = "com.mysql.jdbc.Driver";
         userName = "root";
         password = "";
-              
-         try {
+         if(CheckLike(productId,accountId) == 1){
+             try {
             Class.forName(driver).newInstance();
             conn = DriverManager.getConnection(url+dbName,userName,password);
             System.out.println("Connected to the database");
@@ -318,7 +317,9 @@ public class MarketPlace {
             return 0;
             
         }
-        
+       }
+         
+        return 0;
     }
     @WebMethod(operationName = "DelLike")
     public int DelLike(int productId ,int accountId ) {
@@ -438,7 +439,7 @@ public class MarketPlace {
               conn = DriverManager.getConnection(url+dbName,userName,password);
               System.out.println("Connected to the database");
               Statement stmt=conn.createStatement();  
-              ResultSet rs=stmt.executeQuery("select * from purchases where product_username like '%"+ username +"%';");
+              ResultSet rs=stmt.executeQuery("select * from purchases where product_username like '"+ username +"';");
           
               while(rs.next()){
                 purchases temp = new purchases();

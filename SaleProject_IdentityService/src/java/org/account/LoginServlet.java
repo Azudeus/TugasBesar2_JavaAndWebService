@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
 /**
  *
@@ -33,15 +34,23 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        JSONObject jsonResponse = new JSONObject();
         PrintWriter out = response.getWriter();
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         if(Login.checkUser(email,password)) {
-            out.print(Login.findUserId(email,password));
+            int retid = Login.findUserId(email,password);
+            jsonResponse.put("id",retid);
+            jsonResponse.put("username",Login.findUsernamebyId(retid));
+            out.write(jsonResponse.toString());
+            out.flush();
         }else {
-            out.println("Login failed");
+            jsonResponse.put("id","Login failed");
+            jsonResponse.put("username","nil");
+            out.write(jsonResponse.toString());
+            out.flush();
          }
     }
 
